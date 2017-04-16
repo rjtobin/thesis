@@ -50,7 +50,7 @@ by reversing a substring in $\tau$.
 Substring reversal is a well-studied operation on permutations, and 
 often  appears in metrics on permutations, edit distances
 and permutation statistics. There are numerous applications involving many variations of substring reversal,
-such as genome arrangements and sequencing  (see \cite{BafnaPevzner1996}, \cite{Hannenhalli1996}, \cite{ks}). 
+such as genome arrangements and sequencing  (see \cite{BafnaPevzner1996}, \cite{Hannenhalli1996}, \cite{KececiogluSankoff1995}). 
 
 The \textit{reversal graph} $R_n$ is the graph whose vertex set is the permutation group $S_n$, where
 two vertices are adjacent if they are substring reversals of each other. Thus, $R_n$ has $n!$ vertices and is regular
@@ -85,14 +85,14 @@ for $1 < k \leq n$.
 where the exact value of the diameter is known, the problem of determining the diameter of the pancake  
 graph has a long history and still remains open.
 This problem was first posed by Jacob Goodman, under the pseudonym Harry Dweighter, as a Monthly problem
-in 1975 \cite{AMM}.
+in 1975 \cite{Dweighter1975}.
 The current best upper bound is $f(n) \leq \frac{18}{11} n $, due to
-Chitturi et al. \cite{Chitturi2009}, improving on a previous bound of $\frac{5}{3} n$ given by
- Gates and Papadimitriou \cite{Gates1979} in 1979.  The best lower bound is
+Chitturi et al. \cite{ChitturiEtAl2009}, improving on a previous bound of $\frac{5}{3} n$ given by
+ Gates and Papadimitriou \cite{GatesPapadimitriou1979} in 1979.  The best lower bound is
 $f(n) \geq 15 \left\lfloor \frac{n}{14} \right\rceil$, which is due to 
-Heydari and Sudborough \cite{HeydariSudborough}.  Recently it was shown that the problem of  determining the exact minimum number of flips
+Heydari and Sudborough \cite{HeydariSudborough1997}.  Recently it was shown that the problem of  determining the exact minimum number of flips
 to transform  one permutation $\tau_1$ into another permutation $\tau_2$, for two
-given permutations $\tau_1$ and $\tau_2$, is NP--hard \cite{Bulteau2015}.
+given permutations $\tau_1$ and $\tau_2$, is NP--hard \cite{BulteauEtAl2015}.
   In \cite{Cesi2009}, it 
 was determined that the spectral gap of $\mathcal{P}_n$ is one, answering a 
 question posed in \cite{GunnellsEtAl2007}.
@@ -129,10 +129,10 @@ The graphs $R_n$ and $\mathcal{P}_n$, as well as many of the graphs in
 $\mathcal{F}_n$, are Cayley graphs of the symmetric group $S_n$.
 Indeed, Cayley graphs of the symmetric group  
 have been the subject of extensive study,
-with particular interest in their spectral gap.  In \cite{Lubotzky}, 
+with particular interest in their spectral gap.  In \cite{Lubotzky1995}, 
 Lubotzky posed the problem of finding a family of $k$-regular Cayley
 graphs of $S_n$ with spectral gap bounded away from zero;  an explicit
-construction of such a family was found in \cite{Kassabov2005}.  For many 
+construction of such a family was found in \cite{Kassabov2007}.  For many 
 particular Cayley graphs of $S_n$, the spectral gap has been computed
 \cite{Friedman2000,FlattoEtAl1985,Cesi2009},
 and the case when $S$ consists of transpositions is particularly well-studied.
@@ -170,7 +170,7 @@ be used to determine the rate of convergence for random walks on irregular graph
 to study the combinatorial Laplacian and normalized Laplacian.
 In this section, we consider general weighted graphs and define the eigenvalues of the normalized Laplacian,
 which will be important when we define graph covers.
-For undefined terminology, the reader is referred to  \cite{cgn}.
+For undefined terminology, the reader is referred to  \cite{Chung1997}.
 
 
 %We will use the following standard result from matrix analysis, see for 
@@ -197,8 +197,7 @@ For a $d$-regular graph, we have $\mathcal{L}_G =1 - \frac{1}{d} A_G$.
 The eigenvalues of the normalized Laplacian $\mathcal{L}_G$ are denoted by
 $0=\lambda_0 \leq \lambda_1 \leq \ldots \leq \lambda_{n-1}$ where $n$ is the number of vertices in $G$.
 $\lambda_1$ is called the spectral gap of the normalized Laplacian, and the rate of convergence of random walks on $G$ 
-with transition probability matrix $P=D_G^{-1} A_G$ is exactly $
-\lambda_1^{-1}$ (see \cite{cgn}).  We will denote the eigenvalues of 
+with transition probability matrix $P=D_G^{-1} A_G$ is exactly $\lambda_1^{-1}$ (see \cite{Chung1997}).  We will denote the eigenvalues of 
 the adjacency matrix of $G$ by $\mu_1 \geq \mu_2 \geq \cdots \geq \mu_n$,
 and $\mu_1 - \mu_2$ is the spectral gap of the adjacency matrix. For a regular graph of degree $d$, $\mu_1=d$
 and $\mu_2 = d (1-\lambda_1)$.
@@ -255,7 +254,7 @@ $R_n = \text{Cay}_R(S_n,S)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\section{Graph coverings}
-In proving Theorem~\ref{thm:main} and Theorem~\ref{thm:rev_eig}, we will rely heavily on graph coverings, an idea developed in \cite{coverings}.  A short overview is presented here.  Let $G$ and $ \tilde{G}$ be two weighted graphs.  Then $\tilde{G}$ is a \textit{covering} of $G$ if there is a surjection $\pi : V(\tilde{G}) \to V(G)$ satisfying the following two properties:
+In proving Theorem~\ref{thm:main} and Theorem~\ref{thm:rev_eig}, we will rely heavily on graph coverings, an idea developed in \cite{ChungYau1998}.  A short overview is presented here.  Let $G$ and $ \tilde{G}$ be two weighted graphs.  Then $\tilde{G}$ is a \textit{covering} of $G$ if there is a surjection $\pi : V(\tilde{G}) \to V(G)$ satisfying the following two properties:
 \begin{itemize}
  \item[(1)] For $x,y \in V(\tilde{G})$, where $\pi(x) = \pi(y)$, and for any $v \in V(G)$
  \[ \displaystyle \sum_{z \in \pi^{-1}(v)} w(z,x) = \displaystyle \sum_{z \in \pi^{-1}(v)} w(z,y) . \]
@@ -264,11 +263,11 @@ In proving Theorem~\ref{thm:main} and Theorem~\ref{thm:rev_eig}, we will rely he
   \displaystyle \sum_{\substack{x \in \pi^{-1}(u) \\ y \in \pi^{-1}(v)}} w(x,y) = m w(u,v) .
  \end{equation}
 \end{itemize}
-As $\pi$ is a surjection, it can alternatively be viewed as a partition of the vertices of $V(\tilde{G})$ into $|V(G)|$ sets.  With this interpretation, the above definition can be seen as a generalization of an \textit{equitable partition}; see, for example, \cite{agt}.
+As $\pi$ is a surjection, it can alternatively be viewed as a partition of the vertices of $V(\tilde{G})$ into $|V(G)|$ sets.  With this interpretation, the above definition can be seen as a generalization of an \textit{equitable partition}; see, for example, \cite{GodsilRoyle2013}.
 We say that $G$ is a {\it projection} of $\tilde{G}$ via the mapping $\pi$ if $\tilde{G}$ is a covering of $G$ under $\pi$.
 
 
-The virtue of a graph covering is that there is a strong correspondence between the eigenvalues of a covering graph and the eigenvalues of the projection.  This correspondence is the content of the following theorem, which is proved in \cite{coverings}.
+The virtue of a graph covering is that there is a strong correspondence between the eigenvalues of a covering graph and the eigenvalues of the projection.  This correspondence is the content of the following theorem, which is proved in \cite{ChungYau1998}.
 
 \begin{theorem}\label{thm:cov-cor}
 \emph{(Covering-Correspondence)} \\
@@ -727,7 +726,7 @@ expansion of a $d$-regular graph $G$, $h_G$, is defined as
 If $S$ is the set of permutations whose last entry is $n$, then
 $|S| = |E(S,\bar{S})| = (n-1)!$, which gives the upper bound
 $h_G \leq 1/(n-1)$.  To obtain a lower bound, we can use an inequality
-from \cite{cgn},
+from \cite{Chung1997},
 $h_G \geq \lambda_1 / 2$.   Combining these two inequalities gives the bounds
  \[ \frac{1}{2(n-1)} \leq h_G \leq \frac{1}{n-1} .\] 
 
@@ -1005,7 +1004,7 @@ the first nontrivial eigenvalue of
 the normalized Laplacian of $\mathcal{P}_n + I$ is $1/n$ and all eigenvalues of the normalized Laplacian
 of $\mathcal{P}_n + I$ are at most $2-1/n$. It is known that the rate of convergence for random walk is the inverse of  $\lambda^{-1}$ where $\lambda= \min \{\lambda_1, 2-\lambda_{n-1}\}$ where $0=\lambda_0,
 \lambda_1, \ldots, \lambda_{n-1}$ are the nontrivial eigenvalues of the normalized Laplacian of $\mathcal{P}_n + I$. However, in order to get tight bounds for the convergence of the random walk to the stationary distribution under the  total variational distance, more work is needed. For a vertex-transitive graph, a general upper bound after $t$ steps of random walk on 
-$\mathcal{P}_n + I$ can be derived by using the Plancherel formula (see \cite{cgn}):
+$\mathcal{P}_n + I$ can be derived by using the Plancherel formula (see \cite{Chung1997}):
 \begin{align*}
 \Delta_{TV}(t) &\leq \frac 1 2 \Big( \sum_{i \not = 0} (1-\lambda_i)^{2t}\Big)^{1/2}.
 \end{align*}
