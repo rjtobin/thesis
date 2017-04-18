@@ -2,28 +2,53 @@
 
 \section{Preliminaries}
 
+The subject of this dissertation is \textit{spectral graph theory}, which studies graphs through
+various associated matrices, such as the adjacency matrix or normalized Laplacian.
+We will address several problems in this area, with a common theme
+of computing or maximizing a spectral parameter, such as the spectral radius, over some families of graphs.  
+In this section, we provide an overview of the background terminology and results that will be used throughout the
+dissertation, and establish notation.  The section concludes with a summary of the main results.
+
+
+A graph $G$ is a pair $(V,E)$, where $E$ is a set of \textit{vertices} and $E$ is a set of unordered
+pairs of vertices, which are called the \textit{edges} of $G$.  For clarity, we will often
+use the notation $V = V(G)$ and $E = E(G)$.  A subgraph of $G$ is a graph whose vertex set and
+edge set are subsets of $V(G)$ and $E(G)$ respectively.
+
+
+Two vertices $x,y$ are said to be \textit{adjacent}
+if the pair $(x,y)$ belongs to the edge set.  The \textit{neighbors} of a vertex $x$, denoted $N(x)$,
+is the set of all vertices that are adjacent to $x$.  The \textit{degree} of a vertex $x$, denoted $d_x$,
+is defined by $d_x = |N(x)|$.  The \textit{average degree} $d$ of a graph is then given by
+\[ d = \sum_{x \in V(G)} d_x = \frac{2 |E(G)|}{|V(G)|}. \]
+
+
+% TODO: weighted graphs
+
 \section{Spectral Graph Theory}
 
-\subsection{Fundamentals of Linear Algebra}
-
 \subsection{Matrices Associated to Graphs}
+
+
+
+\subsection{Fundamental Inequalities}
 
 \subsection{Graph Coverings and Projections}
 
 \section{Overview of Results}
 
 %\section{A section}
-Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla odio
-sem, bibendum ut, aliquam ac, facilisis id, tellus. Nam posuere pede
-sit amet ipsum. Etiam dolor. In sodales eros quis pede.  Quisque sed
-nulla et ligula vulputate lacinia. In venenatis, ligula id semper
-feugiat, ligula odio adipiscing libero, eget mollis nunc erat id orci.
-Nullam ante dolor, rutrum eget, vestibulum euismod, pulvinar at, nibh.
-In sapien. Quisque ut arcu. Suspendisse potenti. Cras consequat cursus
-nulla.
+%Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla odio
+%sem, bibendum ut, aliquam ac, facilisis id, tellus. Nam posuere pede
+%sit amet ipsum. Etiam dolor. In sodales eros quis pede.  Quisque sed
+%nulla et ligula vulputate lacinia. In venenatis, ligula id semper
+%feugiat, ligula odio adipiscing libero, eget mollis nunc erat id orci.
+%Nullam ante dolor, rutrum eget, vestibulum euismod, pulvinar at, nibh.
+%In sapien. Quisque ut arcu. Suspendisse potenti. Cras consequat cursus
+%nulla.
 
 %\subsection{A Figure Example}
-\label{ssec:figure_example}
+%\label{ssec:figure_example}
 
 %This subsection shows a sample figure.
 
@@ -36,37 +61,37 @@ nulla.
 
 %\subsection{A Table Example}
 
-While in Section \ref{ssec:figure_example} Figure \ref{fig:sandiego} we had a majestic figure, here we provide a crazy table example.
+%While in Section \ref{ssec:figure_example} Figure \ref{fig:sandiego} we had a majestic figure, here we provide a crazy table example.
 
 
 %%%% TABLE 1 %%%%
-\vspace{0.25in}
-\begin{table}[!ht]
-\caption[Short figure caption (must be \protect{$< 4$} lines in the list of tables)]{A table of when I get hungry.  Note that tables must be on their own line (no neighboring text) and captions must be single-spaced and appear \protect\textit{above} the table.  Captions can be as long as you want, but if they are longer than 4 lines in the list of figures, you must provide a short figure caption.}
+%\vspace{0.25in}
+%\begin{table}[!ht]
+%\caption[Short figure caption (must be \protect{$< 4$} lines in the list of tables)]{A table of when I get hungry.  Note that tables must be on their own line (no neighboring text) and captions must be single-spaced and appear \protect\textit{above} the table.  Captions can be as long as you want, but if they are longer than 4 lines in the list of figures, you must provide a short figure caption.}
 
-\vspace{-0.25in}
-\begin{center}
-\begin{tabular}{|p{1in}|p{2in}|p{3in}|}
+%\vspace{-0.25in}
+%\begin{center}
+%\begin{tabular}{|p{1in}|p{2in}|p{3in}|}
 
-\hline
-Time of day & Hunger Level & Preferred Food \\
+%\hline
+%Time of day & Hunger Level & Preferred Food \\
 
-\hline
-8am & high & IHOP (French Toast) \\
+%\hline
+%8am & high & IHOP (French Toast) \\
 
-\hline
-noon & medium & Croutons (Tomato Basil Soup \& Granny Smith Chicken Salad) \\
+%\hline
+%noon & medium & Croutons (Tomato Basil Soup \& Granny Smith Chicken Salad) \\
 
-\hline
-5pm & high & Bombay Coast (Saag Paneer) or Hi Thai (Pad See Ew) \\
+%\hline
+%5pm & high & Bombay Coast (Saag Paneer) or Hi Thai (Pad See Ew) \\
 
-\hline
-8pm & medium & Yogurt World (froyo!) \\
+%\hline
+%8pm & medium & Yogurt World (froyo!) \\
 
-\hline
-\end{tabular}
-\end{center}
-\label{tab:analysis3}
-\end{table}
+%\hline
+%\end{tabular}
+%\end{center}
+%\label{tab:analysis3}
+%\end{table}
 
 
