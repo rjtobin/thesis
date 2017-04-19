@@ -30,6 +30,33 @@ is defined by $d_x = |N(x)|$.  The \textit{average degree} $d$ of a graph is the
 \subsection{Matrices Associated to Graphs}
 
 
+Given a graph $G$ on $n$ vertices, many $n \times n$ matrices which encode the structure
+of the graph have been studied, including the adjacency matrix $A$, the combinatorial Laplacian $L$,
+the normalized Laplacian $\mathcal{L}$, the distance matrix $D$ and the signless Laplacian $Q$.
+We will be concerned with three of these, the adjacency matrix, and the combinatorial and normalized
+Laplacians.  In this subsection we define these matrices, and discuss some of their properties.
+Throughout this subsection we will be considering a graph $G$ with vertex set
+$V(G) = \left\{ 1,2, \cdots, n\right\}$.
+
+
+The adjacency matrix is the $n \times n$ matrix defined by
+\[
+ A(i,j) =
+  \begin{cases} 
+      \hfill 1 \hfill & \text{if $(i,j)$ is an edge of $G$} \\
+      \hfill 0 \hfill & \text{if $(i,j)$ is not an edge of $G$.} \\
+  \end{cases}
+\]
+This is a symmetric matrix, and so will have $n$ real eigenvalues and a basis of
+$n$ orthogonal eigenvectors.  We will denote the eigenvalues of the adjacency matrix
+by $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$.  By the Perron--Frobenius theorem,
+if the graph $G$ is connected then $\lambda_1 > \lambda_2$, and we can choose
+eigenvector corresponding to $\lambda_1$ whose entries are all strictly positive.
+
+
+
+
+
 
 \subsection{Fundamental Inequalities}
 
