@@ -21,6 +21,7 @@ if the pair $(x,y)$ belongs to the edge set.  The \textit{neighbors} of a vertex
 is the set of all vertices that are adjacent to $x$.  The \textit{degree} of a vertex $x$, denoted $d_x$,
 is defined by $d_x = |N(x)|$.  The \textit{average degree} $d$ of a graph is then given by
 \[ d = \sum_{x \in V(G)} d_x = \frac{2 |E(G)|}{|V(G)|}. \]
+A graph is \textit{$d$-regular} if every vertex has degree $d$.
 
 
 % TODO: weighted graphs
@@ -54,15 +55,135 @@ if the graph $G$ is connected then $\lambda_1 > \lambda_2$, and we can choose
 eigenvector corresponding to $\lambda_1$ whose entries are all strictly positive.
 
 
-
+%TODO: Courant-Fisher
 
 
 
 \subsection{Fundamental Inequalities}
 
-\subsection{Graph Coverings and Projections}
+We will frequently manipulate inequalities involving properties of the graph, such as the number
+of edges, and spectral parameters, such as the eigenvalues and eigenvector entries.
+We introduce such manipulations by giving the proofs of some classic inequalities in spectral graph
+theory which we will use.
+
+
+Throughout this section we will assume that $\mathbf{v}$ is the eigenvector
+corresponding to the eigenvalue $\lambda_1$ of the adjacency matrix.  Additionally we assume that
+it is normalized so that it has maximum entry equal to 1, and that vertex $x$ is a vertex attaining this.  F
+rom the definition of the adjacency matrix, we have
+\begin{equation}
+  \lambda_1 \mathbf{v}_y = \sum_{z \sim y} \mathbf{v}_z .
+\end{equation}
+Our choice of normalization yields
+\begin{equation}
+  \lambda_1 \mathbf{v}_y = \sum_{y \sim x} \mathbf{v}_y\leq d_y .
+\end{equation}
+
+
+\begin{theorem}[Stanley \cite{Stanley1987}]
+  Given a graph $G$ with $m$ edges and largest adjacency eigenvalue $\lambda_1$, we have
+  \[ \lambda_1 \leq \frac{-1 + \sqrt{8m + 1}}{2} ,\]
+  with equality only when $G$ is the union of a complete graph and a (possibly empty) independent set of vertices.
+\end{theorem}
+\begin{proof}
+  We have
+  \begin{eqnarray*}
+    \lambda_1^2 = \lambda_1^2 \mathbf{v}_x & = & \sum_{y \sim x} \lambda_1 \mathbf{v}_y \leq \sum_{y \sim x} d_y \leq 2m - d_x \leq 2m - \lambda_1, 
+  \end{eqnarray*}
+  where the last inequality follows from $\lambda_1 \leq d_x$.  This implies the desired inequality.  For the equality case, we must have
+  $\lambda_1 = d_x$ and $\sum_{y \sim x} d_y = 2m - d_x$.  This happens only if every edge in $G$ is incident to a vertex in $N(x)$,
+  and if there is a $d_x$-regular connected component.  This is exactly the union of a complete graph and an independent set of vertices. 
+  
+\end{proof}
+
+
+There have been many generalizations of this result \cite{Hong1988, HongEtAl2001, Nikiforov2002, DasKumar2004},
+as well as several
+similar inequalities, which incorporate additional information about the graph structure
+such as the minimum or maximum degree \cite{FavaronMaheoSacle1993, BermanZhang2001, Nikiforov2006Walks}.  We highlight one of these generalizations here, which will be useful later.
+
+\begin{theorem}[Hong \cite{Hong1988}]
+  Given a graph $G$ with $m$ edges and largest adjacency eigenvalue $\lambda_1$, we have
+  \[ \lambda_1 \leq \sqrt{2m - n + 1} ,\]
+  with equality only when $G$ is either $K_n$ or $K_{1,n}$.
+\end{theorem}
+This can be proved with a small modification to the proof above.  
+
 
 \section{Overview of Results}
+
+The remainder of this thesis is broken into three chapters.  In Chapter~2 we consider
+measures of graph irregularity, which are statistics that quantify how much a graph deviates
+from being regular.
+In particular, we consider two such statistics. The first is the principal ratio, which,
+for a connected graph, is the ratio of the largest and smallest entries of the leading
+eigenvector of the adjacency matrix.  For this statistic, we characterze the extremal
+graphs for large enough $n$.  This was conjectured by Cioab\u{a} and Gregory
+\cite{CioabaGregory2007}.
+\begin{theorem}\label{main_theorem}
+  For sufficiently large $n$, the connected graph $G$ on $n$
+  vertices with largest principal ratio is a kite graph.
+\end{theorem}
+\noindent The second graph irregularity measure we consider is  $\lambda_1 - d$,
+the difference between the largest adjacency eigenvalue and the average degree.
+In this case we show that the extremal connected graphs are \textit{pineapple graphs}, which
+are a clique with a set of pendant edges added to a single vertex on the clique.
+This was conjectured by Aouchiche et. al. \cite{AouchicheEtAl2008}.
+\begin{theorem}
+  For sufficiently large $n$, the connected graph that maximizes $\lambda_1 - d$
+  is a pineapple graph.
+\end{theorem}
+
+
+
+In Chapter~3, we consider planar and outerplanar graphs, and maximize the adjacency
+spectral radius over each of these families for a fixed number of vertices.  The problem
+of determining the maximum spectral radius over some family of geometric graphs has been
+studied by many authors, with the case of planar graphs receiving particular attention.
+%TODO: CITATIONS
+We show that for sufficiently large $n$ the extremal graphs are the graphs $P_2 + P_{n-2}$.
+This was conjectured independently by Boots and Royle in 1991 \cite{BootsRoyle1991} and
+by Cao and Vince in 1993 \cite{CaoVince1993}.
+\begin{theorem}
+  For sufficiently large $n$, the planar graph on $n$ vertices that maximizes $\lambda_1$
+  is $P_2 + P_{n-2}$.
+\end{theorem}
+\noindent We also answer the analogous problem for outerplanar graphs, showing that
+the extremal graph in that case is given by $P_1 + P_{n-1}$, as conjectured
+by Cvetkovi\'{c} and Rowlinson \cite{CvetkovicRowlinson1990}.
+\begin{theorem}
+  For sufficiently large $n$, the planar graph on $n$ vertices that maximizes $\lambda_1$
+  is $P_1 + P_{n-1}$.
+\end{theorem}
+
+
+Finally, in Chapter~4 we study several families of graphs that arise in the context
+of \textit{substring reversals}.  Given a permutation $\sigma$ written in list notation
+$(\sigma_1, \sigma_2, \cdots, \sigma_n)$, a substring reversal is any permutation
+of the form
+\[ (\sigma_1, \sigma_2, \cdots, \sigma_{i-1}, \sigma_j, \sigma_{j-1}, \cdots, \sigma_{i}, \sigma_{j+1}, \cdots, \sigma_n) .\]
+When $i = 1$, this is a \textit{prefix reversal}.  The \textit{reversal graph} has vertex set $S_n$
+and where two vertices are adjacent if they can be obtained from one another by a substring reversal.
+The study of this graph is motivated by applications in mathematical biology \cite{BafnaPevzner1996}.
+Our main result is determining the spectral gap of this graph.
+%TODO: more citations
+\begin{theorem}
+  Let $\lambda_1, \lambda_2$ be the largest and second largest eigenvalues
+  of the adjacency matrix of the reversal graph.  Then $\lambda_1 - \lambda_2 = n$.
+\end{theorem}
+Additionally, we construct a family of graphs which generalize the prefix reversal graph,
+for which every graph has spectral gap equal to one.  This provides a combinatorial
+proof that the spectral gap of the prefix reversal gap is one, which was proved via
+representation theory by Cesi \cite{Cesi2009}, who in turn was answering a question
+posed by Gunnells, Scott and Walden \cite{GunnellsEtAl2007}.
+
+
+
+
+
+
+
+
 
 %\section{A section}
 %Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nulla odio
