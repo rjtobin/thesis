@@ -1,58 +1,71 @@
 \chapter{Measures of Graph Irregularity}
 \section{Introduction}
 
-Several measures of graph irregularity have been proposed to evaluate how far a graph is
-from being regular.  In this paper we determine the extremal graphs
-with respect to one such irregularity measure,
-answering a conjecture of Cioab\u{a} and Gregory \cite{CioabaGregory2007}.
+A \textit{measure of graph irregularity} is a  statistics that quantifies how far a graph is
+from being regular.  The choice of the word ``measure'' is slightly unfortunate due to its
+more common usage in mathematics, but this is the phrase that has been used repeatedly in the
+literature, and so we adopt it here.  Many different such statistics have been proposed.
+There is the \textit{irregularity of a graph} as defined by Albertson \cite{Albertson1997},
+\[ \textrm{irr}(G) = \sum_{(u,v) \in E(G)} \left| d_u - d_v \right| .\]
+A variant of this that depends only on the degree sequence of a graph,
+the \textit{total irregularity}, was introduced by Abdo et. al. \cite{Abdo2014},
+\[ \textrm{irr}_{\textrm{it}}(G) = \frac{1}{2} \sum_{u \in V(G)} \sum_{v \in V(G)} \left| d_u - d_v\right|\]
+Another irregularity measure that does depends only on the degree sequence is given by the
+variance of the degree sequence, studied by Bell \cite{Bell1992},
+\[var(G) = \frac{1}{n} \sum_{v\in V(G)} \left| d_v - \bar{d} \right|^2 . \]
+Collatz and Sinogowitz, in perhaps the first spectral graph theory paper, noted
+that the difference between the largest adjacency eigenvalue and the average degree
+can be seen as a measure of the irregularity of a connected graph \cite{CollatzSinogowitz1957}.
+Finally, the \textit{principal ratio} of a connected graph was studied as a
+measure of graph irregularity by Cioab\u{a} and Gregory \cite{CioabaGregory2007},
+\[ \gamma(G) = \frac{\mathbf{x}_{\text{max}}}{\mathbf{x}_{\text{min}}},\]
+where $\mathbf{x}$ is a positive eigenvector corresponding to the
+largest eigenvalue of the adjacency matrix, and
+$x_{\text{min}}$ and $x_{\text{max}}$ are the smallest and largest eigenvector
+entries respectively.
 
-All graphs in this paper will be simple and undirected, and all
-eigenvalues are of the adjacency matrix of the graph.
-For a connected graph $G$, the eigenvector corresponding to its largest
-eigenvalue, the \textit{principal eigenvector}, can be taken to have
-all positive entries. If $\textbf{x}$ is this eigenvector, let
-$x_{\text{min}}$ and $x_{\text{max}}$ be the smallest and largest eigenvector
-entries respectively.  Then define the \textit{principal ratio},
-$\gamma(G)$ to be
- \[ \gamma(G) = \frac{x_{\text{max}}}{x_{\text{min}}} .\]
-Note that $\gamma(G) \geq 1$ with equality exactly when $G$ is regular,
-and it therefore can be considered as a measure of graph irregularity.
+In this section we determine the extremal graphs
+with respect to the last two irregularity measures,
+answering conjectures of Cioab\u{a} and Gregory \cite{CioabaGregory2007}
+and Aouchiche et. al. \cite{AouchicheEtAl2008}.
+
 
 Let $P_r \cdot K_s$ be the graph attained by identifying an end vertex
 of a path on $r$ vertices to any vertex of a complete graph
 on $s$ vertices.  This has been called a \textit{kite graph} or a
 \textit{lollipop graph}.  Cioab\u{a} and Gregory \cite{CioabaGregory2007}
 conjectured that the connected graph on $n$ vertices maximizing $\gamma$
-is a kite graph.  Our main theorem proves this conjecture for $n$ large
+is a kite graph.  Our first result proves this conjecture for $n$ large
 enough.
-
 \begin{theorem}\label{main_theorem}
   For sufficiently large $n$, the connected graph $G$ on $n$
   vertices with largest principal ratio is a kite graph.
 \end{theorem}
 
+
+A \textit{pineapple graph} is a clique with pendant edges added to a single vertex.
+Aouchiche et al \cite{AouchicheEtAl2008} conjectured that the extremal connected
+graph with respect to the invariant $\lambda_1 - d$ is a pineapple graph.  We
+show this for sufficiently large $n$.
+\begin{theorem}\label{main_theorem}
+  For sufficiently large $n$, the connected graph $G$ on $n$
+  that maximizes $\lambda_1 - d$ is a pineapple graph.
+\end{theorem}
+
+
+
 We note that Brightwell and Winkler \cite{BrightwellWinkler1990} showed that
 a kite graph maximizes the expected hitting time of a random walk.
-Other irregularity measures for graphs have been well--studied.
-Bell \cite{Bell1992} studied the irregularity measure $\epsilon(G) := \lambda_1(G) - \bar{d}(G)$,
-the difference between the spectral radius and the average degree of $G$.
-He determined the extremal graph over all (not necessarily connected)
-graphs on $n$ vertices and $e$ edges.  It is not known what the extremal
-connected graph is, and Aouchiche et al \cite{AouchicheEtAl2008} conjectured that this extremal
-graph is a `pineapple': a complete graph with pendant vertices added
-to a single vertex.  Bell also studied the
-\textit{variance} of a graph,
- \[var(G) = \frac{1}{n} \sum_{v\in V(G)} \left| d_v - \bar{d} \right|^2 . \]
- Albertson \cite{Albertson1997} defined a measure of irregularity by 
- \[
- \sum_{uv\in E(G)} |d(u) - d(v)|
- \]
- and the extremal graphs were characterized by Hansen and M\'elot \cite{HansenMelot2002}. 
- 
+The extremal graphs for various of these irregularity measures have been
+studied.
+The extremal graphs with respect to $\textrm{irr}(G)$
+were characterized by Hansen and M\'elot \cite{HansenMelot2002},
+and the extremal graphs with respect to the total irregularity
+were studied by \cite{Abdo2014}.
 Nikiforov \cite{Nikiforov2006} proved several inequalities comparing
 $var(G)$, $\epsilon(G)$ and $s(G) := \sum_v |d(u) - \bar{d}|$.  
 Bell showed that $\epsilon(G)$ and $var(G)$ are incomparable in general
-\cite{Bell1992}.  Finally, bounds on $\gamma(G)$ have been given in
+\cite{Bell1992}.  Finally, additional bounds on $\gamma(G)$ have been given in
 \cite{CioabaGregory2007, PapendieckRecht2000, Minc1970, Latham1995, Zhang2005}.
 
 
@@ -61,7 +74,7 @@ Bell showed that $\epsilon(G)$ and $var(G)$ are incomparable in general
 \subsection{Structural Lemmas}
 %XXX: move this stuff somewhere
 
-Throughout this paper $G$ will be a connected simple graph on $n$ vertices.
+Throughout this section $G$ will be a connected simple graph on $n$ vertices.
 The eigenvectors and eigenvalues of $G$ are those of the adjacency
 matrix $A$ of $G$.  The vector $v$ will be the eigenvector corresponding
 to the largest eigenvalue $\lambda_1$,  and we take $v$ to be scaled
@@ -76,12 +89,12 @@ the eigenvector equation becomes
 
  \[ \lambda v = \sum_{w \sim v} w. \]
 
-\noindent We will make use of the Rayleigh quotient characterization of the
-largest eigenvalue of a graph,
+%\noindent We will make use of the Rayleigh quotient characterization of the
+%largest eigenvalue of a graph,
 
-\begin{equation}\label{rayleigh}
-  \lambda_1(G) = \max_{0 \neq v} \frac{v^T A(G) v}{v^t v} 
-\end{equation}
+%\begin{equation}\label{rayleigh}
+%  \lambda_1(G) = \max_{0 \neq v} \frac{v^T A(G) v}{v^t v} 
+%\end{equation}
 
 
 Recall that the vertices $v_1, v_2, \cdots, v_m$ are a 
@@ -139,7 +152,7 @@ paper of Cioab\u{a} and Gregory \cite{CioabaGregory2007}.
    \[ s - 1 + \frac{1}{s(s-1)} < \lambda_1(P_r \cdot K_s) < s - 1 + \frac{1}{(s-1)^2} . \]
 \end{lemma}
 
-In the remainder of the paper we prove Theorem~\ref{main_theorem}.
+In the remainder of the section  we prove Theorem~\ref{main_theorem}.
 We now give a sketch of the proof that is contained in Section~\ref{sec_proof}.
 
 \begin{enumerate}
@@ -237,7 +250,7 @@ Now, $s-1 + \frac{1}{s(s-1)} < \lambda_1(P_r\cdot K_s) < s-1 + \frac{1}{(s-1)^2}
 Thus, $n- k = (1+o(1))\frac{n}{\log n}$.
 \end{proof}
 
-For the remainder of this paper we will explore the structure of $G$ by
+For the remainder of this section we will explore the structure of $G$ by
 showing that if certain edges are missing, adding them would increase
 the principal ratio, and so by maximality these edges must already be
 present in $G$.  We have established that the vertices $x_1, x_2, \cdots, x_{k-2}$
