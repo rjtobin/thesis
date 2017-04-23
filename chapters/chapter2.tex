@@ -54,10 +54,12 @@ show this for sufficiently large $n$.
 
 
 
+An analogous problem for directed graphs, finding graphs which maximize the
+principal ratio for directed graphs, was answered by Aksoy et al \cite{AksoyEtAl2016}.
 We note that Brightwell and Winkler \cite{BrightwellWinkler1990} showed that
 a kite graph maximizes the expected hitting time of a random walk.
 The extremal graphs for various of these irregularity measures have been
-studied.
+studied.  
 The extremal graphs with respect to $\textrm{irr}(G)$
 were characterized by Hansen and M\'elot \cite{HansenMelot2002},
 and the extremal graphs with respect to the total irregularity
@@ -879,12 +881,10 @@ $xy < 1/2 - 3\epsilon$, then
 }
 \endgroup
 \end{center}
-\caption{Structure of $G$ in Proposition \ref{almost pineapple structure}.  The number appearing beside
-each set indicates the values of eigenvector entries within the set. 
-$U$ induces a complete
-graph and $V$, $W$ are independent sets.  Each vertex in $V$ is adjacent
-to exactly one vertex in $U$, and each vertex in $W$ is adjacent to multiple
-vertices in $U$.
+\caption{Structure of $G$ in Proposition \ref{almost pineapple structure}.  The number beside
+each set indicates the values of eigenvector entries in the set. 
+$U$ is a clique, $V$, $W$ are independent sets.  Vertices in $V$ are adjacent
+to one vertex in $U$, and vertices in $W$ are adjacent to multiple vertices in $U$.
    \label{pineapple structure picture}}
 \end{figure}
 
@@ -1015,4 +1015,12 @@ with equality if and only if $\textbf{v}$ is a leading eigenvector for $A^+$.  W
 with equality if and only if $u_i = 1$ for all $1 \leq i \leq k$.  By maximality of $G$, we have equality in both of the above inequalities, and so $\textbf{v}$ is a leading eigenvector for $G^+$, and every vertex in $U$ incident to a vertex in $V$ has eigenvector entry 1.  $G^+$ is a pineapple graph, and it is easy to see that there is a single vertex in a pineapple graph with maximum eigenvector entry.  It follows that the vertices in $V$ are all adjacent to the same vertex in $U$, and hence $G$ is a pineapple graph.
 
 \end{proof}
+
+
+This chapter is based on the papers ``Three conjectures in extremal spectral graph theory'',
+ \cite{TaitTobin2017}, to appear in \textit{Journal of Combinatorial Theory, Series B},
+ and ``Characterizing graphs of maximum principal ratio'', submitted to
+ \textit{Electronic Journal of Linear Algebra} \cite{TaitTobin2015},
+both written jointly with Michael Tait.  The dissertation
+author was the primary investigator and author of the paper.
 
