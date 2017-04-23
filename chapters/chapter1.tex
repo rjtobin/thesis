@@ -74,7 +74,7 @@ For real symmetric matrices, we have the following characterization for all of i
 \end{theorem}
 \noindent As a special case, we recover the Rayleigh--Ritz characterization of the extremal eigenvalues
 $\lambda_1$ and $\lambda_n$,
-\begin{theorem}[Rayleigh--Ritz for real matrices]
+\begin{theorem}[Rayleigh--Ritz for real matrices]\label{rayleigh quotient}
   Let $A$ be a real symmetric matrix, with
    eigenvalues $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_n$.
   \[ \lambda_1 = \max_{x \neq 0} \frac{x^T A x}{x^T x},\]
@@ -99,7 +99,7 @@ Throughout this section we will assume that $\mathbf{v}$ is the eigenvector
 corresponding to the eigenvalue $\lambda_1$ of the adjacency matrix.  Additionally we assume that
 it is normalized so that it has maximum entry equal to 1, and that vertex $x$ is a vertex attaining this.  F
 rom the definition of the adjacency matrix, we have
-\begin{equation}
+\begin{equation}\label{eigenvector equation}
   \lambda_1 \mathbf{v}_y = \sum_{z \sim y} \mathbf{v}_z .
 \end{equation}
 Our choice of normalization yields
@@ -148,7 +148,7 @@ for a connected graph, is the ratio of the largest and smallest entries of the l
 eigenvector of the adjacency matrix.  For this statistic, we characterze the extremal
 graphs for large enough $n$.  This was conjectured by Cioab\u{a} and Gregory
 \cite{CioabaGregory2007}.
-\begin{theorem}\label{main_theorem}
+\begin{theorem}
   For sufficiently large $n$, the connected graph $G$ on $n$
   vertices with largest principal ratio is a kite graph.
 \end{theorem}

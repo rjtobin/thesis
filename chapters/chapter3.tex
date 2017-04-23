@@ -88,9 +88,8 @@ Two consequences of $G$ being outerplanar that we will use frequently are that $
 \endgroup
 \end{center}
 \caption{The graph $P_1 + P_{n-1}$.
-   \label{fig-pn4}}
+   \label{fig:outerplanar}}
 \end{figure}
-
 
 We begin with an easy lemma that is clearly not optimal, but suffices for our needs.
 \begin{lemma}\label{trivial lambda bound}
@@ -102,67 +101,68 @@ We begin with an easy lemma that is clearly not optimal, but suffices for our ne
 \end{proof}
 
 \begin{lemma}
- For any vertex $u$, we have $d_u > un - 11\sqrt{n}$.
+ For any vertex $u$, we have $d_u > \mathbf{v}_un - 11\sqrt{n}$.
 \end{lemma}
 \begin{proof}
- Let $A$ be the neighborhood of $u$, and let $B = V(G) \setminus (A\cup \{x\})$.  We have 
-  \[ \lambda_1^2 u = \sum_{y \sim u} \sum_{z \sim y} z \leq d_u + \sum_{y \sim u} \sum_{z \in N(y)\cap A} z + \sum_{y \sim u} \sum_{z \in N(y)\cap B} z \]
+ Let $A$ be the neighborhood of $u$, and let $B = V(G) \setminus (A\cup \{u\})$.  We have 
+  \[ \lambda_1^2 \mathbf{v}_u = \sum_{y \sim u} \sum_{z \sim y} \mathbf{v}_z \leq d_u + \sum_{y \sim u} \sum_{z \in N(y)\cap A} \mathbf{v}_z + \sum_{y \sim u} \sum_{z \in N(y)\cap B} z. \]
 
 \noindent By outerplanarity, each vertex in $A$ has at most two neighbors in $A$, otherwise
 $G$ would contain a $K_{2,3}$.  In particular,
- \[ \sum_{y \sim u} \sum_{z \in N(y)\cap A} z  \leq 2 \sum_{y \sim u} y = 2\lambda_1 u \]
+ \[ \sum_{y \sim u} \sum_{z \in N(y)\cap A} \mathbf{v}_z  \leq 2 \sum_{y \sim u} \mathbf{v}_y = 2\lambda_1 \mathbf{v}_u. \]
 Similarly, each vertex in $B$ has at most $2$ neighbors in $A$.  So
- \[ \sum_{y \sim u} \sum_{z \in N(y)\cap B} z \leq 2 \sum_{z \in B} z \leq \frac{2}{\lambda_1} \sum_{z \in B} d_z \leq \frac{4e(G)}{\lambda_1} \leq \frac{4(2n-3)}{\lambda_1}\]
+ \[ \sum_{y \sim u} \sum_{z \in N(y)\cap B} \mathbf{v}_z \leq 2 \sum_{z \in B} \mathbf{v}_z \leq \frac{2}{\lambda_1} \sum_{z \in B} d_z \leq \frac{4e(G)}{\lambda_1} \leq \frac{4(2n-3)}{\lambda_1}, \]
 as  $e(G) \leq 2n-3$ by outerplanarity.  So, using Lemma~\ref{trivial lambda bound} we have
- \[ \sum_{y \sim u} \sum_{z \in N(y)\cap B} z < 8 \sqrt{n}\]
+ \[ \sum_{y \sim u} \sum_{z \in N(y)\cap B} \mathbf{v}_z < 8 \sqrt{n}.\]
 Combining the above inequalities yields
- \[ \lambda_1^2 u - 2\lambda_1 u < d_u + 8 \sqrt{n}\]
+ \[ \lambda_1^2 \mathbf{v}_u - 2\lambda_1 \mathbf{v}_u < d_u + 8 \sqrt{n}.\]
 Again using Lemma~\ref{trivial lambda bound} we get
- \[ un - 11\sqrt{n} <  (n-1 - 2\sqrt{n-1}) u - 8 \sqrt{n} < d_u .\]
+ \[ \mathbf{v}_u n - 11\sqrt{n} <  (n-1 - 2\sqrt{n-1}) \mathbf{v}_u - 8 \sqrt{n} < d_u .\]
 \end{proof}
 
 \begin{lemma}\label{small eigvec}
- We have $d_x > n - 11 \sqrt{n}$ and for every other vertex $u$, $u < C_1 / \sqrt{n}$ for some absolute constant $C_1$, for $n$ sufficiently large.
+ We have $d_x > n - 11 \sqrt{n}$ and for every other vertex $u$, $\mathbf{v}_u < C_1 / \sqrt{n}$ for some absolute constant $C_1$, for $n$ sufficiently large.
 \end{lemma}
 \begin{proof}
 The bound on $d_x$ follows immediately from the previous lemma and the normalization that
-$x=1$.  Now consider any other vertex $u$.  We know that $G$ contains no $K_{2,3}$, so $d_u < 12 \sqrt{n}$, otherwise $u,x$ share $\sqrt{n}$ neighbors, which
+$\mathbf{v}_x=1$.  Now consider any other vertex $u$.  We know that $G$ contains no $K_{2,3}$, so $d_u < 12 \sqrt{n}$, otherwise $u$ and $x$ share $\sqrt{n}$ neighbors, which
 yields a $K_{2,3}$ if $n \geq 9$.  So
- \[ 12 \sqrt{n} > d_u > u n - 11\sqrt{n}, \]
-that is, $u < 23 / \sqrt{n}$.
+ \[ 12 \sqrt{n} > d_u > \mathbf{v}_u n - 11\sqrt{n}, \]
+that is, $\mathbf{v}_u < 23 / \sqrt{n}$.
 \end{proof}
 
 \begin{lemma}\label{bound bad elements}
  Let $B = V(G) \setminus (N(x) \cup \{x\})$.  Then
-  \[ \sum_{z \in B} z < C_2 / \sqrt{n} \]
+  \[ \sum_{z \in B} \mathbf{v}_z < C_2 / \sqrt{n} \]
  for some absolute constant $C_2$.
 \end{lemma}
 \begin{proof}
-From the previous lemma, we have that $|B| < 11 \sqrt{n}$.  Now
- \[ \sum_{z \in B} z \leq \frac{1}{\lambda_1} \sum_{z \in B} \left(23 / \sqrt{n}\right) d_z = \frac{23}{\lambda_1 \sqrt{n}} \left( e(A,B) + 2 e(B)\right) \]
-Each vertex in $B$ is adjacent to at most two vertices in $A$, so $e(A,B) \leq 2 |B| < 24 \sqrt{n}$.  The graph induced on $B$ is outerplanar, so
-$e(B) \leq 2|B| - 3 < 24 \sqrt{n}$.  Finally, using the fact that $\lambda_1 > \sqrt{n-1}$, we get the required result.
+From the previous lemma, we have $|B| < 11 \sqrt{n}$.  Now
+ \[ \sum_{z \in B} \mathbf{v}_z \leq \frac{1}{\lambda_1} \sum_{z \in B} \left(23 / \sqrt{n}\right) d_z = \frac{23}{\lambda_1 \sqrt{n}} \left( e(A,B) + 2 e(B)\right) . \]
+Each vertex in $B$ is adjacent to at most two vertices in $A$, so $e(A,B) \leq 2 |B| < 22 \sqrt{n}$.  The graph induced on $B$ is outerplanar, so
+$e(B) \leq 2|B| - 3 < 22 \sqrt{n}$.  Finally, using the fact that $\lambda_1 > \sqrt{n-1}$, we get the required result.
 \end{proof}
 
 \begin{theorem}
  For sufficiently large $n$, $G$ is the graph $K_1 + P_{n-1}$, where $+$ represents the graph join operation.
 \end{theorem}
 \begin{proof}
-First we show that the set $B$ above is empty, ie. $x$ is adjacent
+First we show that the set $B$ above is empty, i.e. $x$ is adjacent
 to every other vertex.  If not, let $y \in B$.  Now $y$ is adjacent to at
 most two vertices in $A$, and so by Lemma~\ref{small eigvec} and Lemma~\ref{bound bad elements}, 
- \[ \sum_{z \sim y} z < \sum_{z \in B} z + 2 C_1 / \sqrt{n} < (C_2 + 2 C_1) / \sqrt{n} < 1\]
+ \[ \sum_{z \sim y} \mathbf{v}_z < \sum_{z \in B} \mathbf{v}_z + 2 C_1 / \sqrt{n} < (C_2 + 2 C_1) / \sqrt{n} < 1\]
 when $n$ is large enough.  Let $G^+$ be the graph obtained
 from $G$ by deleting all edges incident to $y$ and replacing them by the single edge $\{x,y\}$.  The resulting graph is outerplanar.  Then,
-by the Rayleigh quotient,
- \[ \lambda_1(A^+) - \lambda_1(A) \geq \frac{\textbf{v}^t(A^+ - A)\textbf{v}}{\textbf{v}^t\textbf{v}} = \frac{1}{\textbf{v}^t\textbf{v}} \left(1 - \sum_{z \sim y} z\right) > 0\]
+using the Rayleigh quotient,
+ \[ \lambda_1(A^+) - \lambda_1(A) \geq \frac{\textbf{v}^t(A^+ - A)\textbf{v}}{\textbf{v}^t\textbf{v}} = \frac{2\mathbf{v}_y}{\textbf{v}^t\textbf{v}} \left(1 - \sum_{z \sim y} \mathbf{v}_z\right) > 0.\]
 This contradicts the maximality of $G$.  Hence $B$ is empty.
 
 
-Now $x$ is adjacent to every other vertex in $G$.  Hence every other vertex has degree less than or equal to $2$.  Moreover,
-$G \setminus \{x\}$ cannot contain any cycles, as then $G$ would not be outerplanar.
+Now $x$ is adjacent to every other vertex in $G$.  Hence every vertex other than $x$ has degree less than or equal to $3$.  Moreover, the graph induced by 
+$V(G) \setminus \{x\}$ cannot contain any cycles, as then $G$ would not be outerplanar.
 It follows that $G$ is a subgraph of $K_1 + P_{n-1}$, and maximality ensures that $G$ must be equal to $K_1 + P_{n-1}$.
 \end{proof}
+
 
 \section{Planar Graphs of Maximum Spectral Radius}\label{planar}
 
@@ -232,7 +232,7 @@ We will use frequently that $G$ has no $K_{3,3}$ as a subgraph, that $m\leq 3n-6
 \endgroup
 \end{center}
 \caption{The graph $P_2 + P_{n-2}$.
-   \label{fig-pn4}}
+   \label{fig:planar}}
 \end{figure}
 
 
@@ -265,9 +265,9 @@ For the lower bound, first note that the graph $K_{2,n-2}$ is planar and is a st
 Next we partition the graph into vertices of small eigenvector entry and those with large eigenvector entry.  Fix $\epsilon > 0$,
 whose exact value will be chosen later.  Let 
 \[
-L:= \{z\in V(G): z> \epsilon\}
+L:= \{\mathbf{v}_z\in V(G): \mathbf{v}_z> \epsilon\}
 \]
-and $S = V(G) \setminus L$. For any vertex $z$, the eigenvector equation gives $z\sqrt{2n-4} < z\lambda_1\leq d_z$. Therefore,
+and $S = V(G) \setminus L$. For any vertex $z$, equation~\eqref{eigenvector equation} gives $\mathbf{v}_z\sqrt{2n-4} < \mathbf{v}_z\lambda_1\leq d_z$. Therefore,
 \[
 2(3n - 6)  \geq \sum_{z\in V(G)} d_z \geq \sum_{z\in L} d_z \geq |L|\epsilon \sqrt{2n-4},
 \]
@@ -289,50 +289,51 @@ yielding $|L| \leq \frac{3\sqrt{2n-4}}{\epsilon}$. Since the subgraph of $G$ con
 Next we show that there are two vertices adjacent to most of $S$. The first step towards this is an upper bound on the sum of eigenvector entries in both $L$ and $S$.
 \begin{lemma}
 \begin{equation}\label{eigenvector norm L}
-\sum_{z\in L} z \leq  \epsilon \sqrt{2n-4} + \frac{18}{\epsilon}
+\sum_{z\in L} \mathbf{v}_z \leq  \epsilon \sqrt{2n-4} + \frac{18}{\epsilon}
 \end{equation}
 \noindent and
  \begin{equation}\label{eigenvector norm S}
- \sum_{z\in S} z \leq (1+3\epsilon)\sqrt{2n-4}
+ \sum_{z\in S} \mathbf{v}_z \leq (1+3\epsilon)\sqrt{2n-4}.
  \end{equation}
 
 \end{lemma}
 \begin{proof}
 \[
-\sum_{z\in L} \lambda_1z = \sum_{z\in L} \sum_{y\sim z} y = \sum_{z\in L}\left( \sum_{\substack{y\sim z \\ y\in S}} y + \sum_{\substack{y\sim z\\ y\in L}} y \right) \leq \epsilon e(S,L) + 2e(L) \leq \epsilon (2n-4) + \frac{18\sqrt{2n-4}}{\epsilon}.
+\sum_{z\in L} \lambda_1 \mathbf{v}_z = \sum_{z\in L} \sum_{y\sim z} \mathbf{v}_y = \sum_{z\in L}\left( \sum_{\substack{y\sim z \\ y\in S}} \mathbf{v}_y + \sum_{\substack{y\sim z\\ y\in L}} \mathbf{v}_y \right) \leq \epsilon e(S,L) + 2e(L) \leq \epsilon (2n-4) + \frac{18\sqrt{2n-4}}{\epsilon}.
 \]
 Dividing both sides by $\lambda_1$ and using Lemma \ref{planar trivial spectral bound} gives \eqref{eigenvector norm L}.
 
  On the other hand,
  \[
- \sum_{z\in S} \lambda_1z = \sum_{z\in S}\sum_{y\sim z} y \leq 2\epsilon e(S) + e(S,L) \leq (6n-12)\epsilon  + (2n-4).
+ \sum_{z\in S} \lambda_1 \mathbf{v}_z = \sum_{z\in S}\sum_{y\sim z} \mathbf{v}_y \leq 2\epsilon e(S) + e(S,L) \leq (6n-12)\epsilon  + (2n-4).
  \]
  Dividing both sides by $\lambda_1$ and using Lemma \ref{planar trivial spectral bound} gives \eqref{eigenvector norm S}.
  \end{proof}
 
- Now let $u\in L$
+ Now, for $u\in L$ we have
 \[
-u\sqrt{2n-4} \leq \lambda_1u=\sum_{y\sim u} y = \sum_{\substack{y\sim u \\ y\in L}} y + \sum_{\substack{y\sim u\\ y\in S}} y \leq \sum_{y\in L} y + \sum_{\substack{y\sim u \\y\in S}} y.
+\mathbf{v}_u\sqrt{2n-4} \leq \lambda_1 \mathbf{v}_u=\sum_{y\sim u} \mathbf{v}_y = \sum_{\substack{y\sim u \\ y\in L}} \mathbf{v}_y + \sum_{\substack{y\sim u\\ y\in S}} \mathbf{v}_y \leq \sum_{y\in L} \mathbf{v}_y + \sum_{\substack{y\sim u \\y\in S}} \mathbf{v}_y.
 \]
 By \eqref{eigenvector norm L}, this gives
 \begin{equation}\label{eigenvector norm neighbors of w}
-\sum_{\substack{y\sim u \\ y\in S}} y \geq (u-\epsilon)\sqrt{2n-4} - \frac{18}{\epsilon}.
+\sum_{\substack{y\sim u \\ y\in S}} \mathbf{v}_y \geq (\mathbf{v}_u-\epsilon)\sqrt{2n-4} - \frac{18}{\epsilon}.
 \end{equation}
 
  
- The equations \eqref{eigenvector norm S} and \eqref{eigenvector norm neighbors of w} imply that if $u\in L$ and $u$ is close to $1$, then the sum of the eigenvector entries of vertices in $S$ not adjacent to $u$ is small. To conclude that this implies $u$ is adjacent to most vertices in $S$ we need the following lemma.
+ The equations \eqref{eigenvector norm S} and \eqref{eigenvector norm neighbors of w} imply that if $u\in L$ and $\mathbf{v}_u$ is close to $1$, then the sum of the eigenvector entries of vertices in $S$ not adjacent to $u$ is small. The following lemma is used to show that $u$ is adjacent to most vertices in $S$.
  
 \begin{lemma}\label{eigenvector entry lower bound}
-For all $z$ we have $z>\frac{1}{\sqrt{6n}}$.
+For all $z$ we have $\mathbf{v}_z>\frac{1}{\sqrt{6n}}$.
 \end{lemma}
 \begin{proof}
-  By way of contradiction assume $z\leq \frac{1}{\sqrt{6n}} < \frac{1}{\lambda_1}$. By the eigenvector equation $z$ cannot be adjacent to $x$, since
-  $x$ has eigenvector entry $1$. Let $H$ be the graph obtained from $G$ by removing all edges incident with $z$ and making $z$ adjacent to $x$. By the Rayleigh quotient, we have $\lambda_1(H) > \lambda_1(G)$, a contradiction.
+  By way of contradiction assume $\mathbf{v}_z\leq \frac{1}{\sqrt{6n}} < \frac{1}{\lambda_1}$. By
+  equation~\eqref{eigenvector equation} $z$ cannot be adjacent to $x$, since
+  $x$ has eigenvector entry $1$. Let $H$ be the graph obtained from $G$ by removing all edges incident with $z$ and making $z$ adjacent to $x$. Using the Rayleigh quotient, we have $\lambda_1(H) > \lambda_1(G)$, a contradiction.
 \end{proof}
 
-\noindent Now letting $u=x$ and combining \eqref{eigenvector norm neighbors of w} and \eqref{eigenvector norm S} gives 
+\noindent Now letting $u=x$ and combining \eqref{eigenvector norm neighbors of w} and \eqref{eigenvector norm S}, we get 
 \[
-(1+3\epsilon)\sqrt{2n-4} \geq \sum_{\substack{y\in S\\ y\not\sim x}} y + \sum_{\substack{y\in S\\ y\sim x}} y \geq \sum_{\substack{y\in S\\ y\not\sim x}} y + (1-\epsilon)\sqrt{2n-4} - \frac{18}{\epsilon}.
+(1+3\epsilon)\sqrt{2n-4} \geq \sum_{\substack{y\in S\\ y\not\sim x}} \mathbf{v}_y + \sum_{\substack{y\in S\\ y\sim x}} \mathbf{v}_y \geq \sum_{\substack{y\in S\\ y\not\sim x}} \mathbf{v}_y + (1-\epsilon)\sqrt{2n-4} - \frac{18}{\epsilon}.
 \]
 Now applying Lemma \ref{eigenvector entry lower bound} gives
 \[
@@ -341,69 +342,68 @@ Now applying Lemma \ref{eigenvector entry lower bound} gives
 For $n$ large enough, we have $|\{y\in S: y\not\sim x\}| \leq 14\epsilon n$. So $x$ is adjacent to most of $S$. Our next goal is to show that there is another vertex in $L$ that is adjacent to most of $S$.
 
 \begin{lemma}\label{second vertex of large degree}
-There is a $w\in L$ with $w\not=x$ such that $w> 1-24\epsilon$ and $|\{y\in S: y\not\sim w\}| \leq 94\epsilon n$.
+There is a $w\in L$ with $w\not=x$ such that $\mathbf{v}_w> 1-24\epsilon$ and $|\{y\in S: y\not\sim w\}| \leq 94\epsilon n$.
 \end{lemma}
 \begin{proof}
-By the eigenvector equation, we see
+By equation~\eqref{eigenvector equation}, we see
 \[
-\lambda_1^2 = \sum_{y\sim x}\sum_{z\sim y} z \leq \left(\sum_{uv\in E(G)} u+v\right) - \sum_{y\sim x} y = \left(\sum_{uv\in E(G)} u+v\right) - \lambda_1.
+\lambda_1^2 = \sum_{y\sim x}\sum_{z\sim y} \mathbf{v}_z \leq \left(\sum_{uv\in E(G)} \mathbf{v}_u+\mathbf{v}_v\right) - \sum_{y\sim x} \mathbf{v}_y = \left(\sum_{uv\in E(G)} \mathbf{v}_u+\mathbf{v}_v\right) - \lambda_1.
 \]
 Rearranging and noting that $e(S) \leq 3n-6$ and $e(L) \leq \frac{9\sqrt{2n-4}}{\epsilon}$ since $S$ and $L$ both induce planar subgraphs gives
 \begin{align*}
-& 2n-4\leq \lambda_1^2 + \lambda_1\leq \sum_{uv\in E(G)} u+v = \left(\sum_{uv\in E(S,L)} u+v\right) + \left(\sum_{uv\in E(S)} u+v\right) + \left(\sum_{uv\in E(L)} u+v \right) \\
-& \leq \left(\sum_{uv\in E(S,L)} u+v \right) + \epsilon(6n-12) + \frac{18\sqrt{2n-4}}{\epsilon}.
+& 2n-4\leq \lambda_1^2 + \lambda_1\leq \sum_{uv\in E(G)} \mathbf{v}_u+\mathbf{v}_v = \left(\sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{uv\in E(S)} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{uv\in E(L)} \mathbf{v}_u+\mathbf{v}_v \right) \\
+& \leq \left(\sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v \right) + \epsilon(6n-12) + \frac{18\sqrt{2n-4}}{\epsilon}.
 \end{align*}
 So for $n$ large enough,
 \[
-(2-7\epsilon)n \leq \sum_{uv\in E(S,L)} u+v =\left( \sum_{\substack{uv\in E(S,L)\\ u=x}} u+v\right) + \left(\sum_{\substack{uv\in E(S,L)\\ u\not= x}} u+v\right) \leq \epsilon e(S,L) + d_x + \sum_{\substack{uv\in E(S,L)\\ u\not= x} } u
+(2-7\epsilon)n \leq \sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v =\left( \sum_{\substack{uv\in E(S,L)\\ u=x}} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{\substack{uv\in E(S,L)\\ u\not= x}} \mathbf{v}_u+\mathbf{v}_v\right) \leq \epsilon e(S,L) + d_x + \sum_{\substack{uv\in E(S,L)\\ u\not= x} } \mathbf{v}_u,
 \]
 giving
 \[
-\sum_{\substack{uv\in E(S,L)\\ u\not = x}} u \geq (1-9\epsilon)n.
+\sum_{\substack{uv\in E(S,L)\\ u\not = x}} \mathbf{v}_u \geq (1-9\epsilon)n.
 \]
 
 Now since $d_x \geq |S| - 14\epsilon n > (1-15\epsilon)n$, and $e(S,L) < 2n$, the number of terms in the left hand side of the sum is at most $(1+15\epsilon)n$. By averaging, there is a $w\in L$ such that 
 \[
-w \geq \frac{1-9\epsilon}{1+15\epsilon} > 1-24\epsilon,
+\mathbf{v}_w \geq \frac{1-9\epsilon}{1+15\epsilon} > 1-24\epsilon .
 \]
-for $\epsilon$ small enough. Applying \eqref{eigenvector norm neighbors of w} and \eqref{eigenvector norm S} to this $w$ gives
+Applying \eqref{eigenvector norm neighbors of w} and \eqref{eigenvector norm S} to this $w$ gives
 \[
-(1+3\epsilon) \sqrt{2n-4} \geq \sum_{\substack{y\in S\\ y\not\sim w}} y + \sum_{\substack{y\in S\\ y\sim w}} y \geq \sum_{\substack{y\in S\\ y\not\sim w}} y + (1-21\epsilon)\sqrt{2n-4} + \frac{18}{\epsilon},
+(1+3\epsilon) \sqrt{2n-4} \geq \sum_{\substack{y\in S\\ y\not\sim w}} \mathbf{v}_y + \sum_{\substack{y\in S\\ y\sim w}} \mathbf{v}_y \geq \sum_{\substack{y\in S\\ y\not\sim w}} \mathbf{v}_y + (1-21\epsilon)\sqrt{2n-4} + \frac{18}{\epsilon},
 \]
 and applying Lemma \ref{eigenvector entry lower bound} gives that for $n$ large enough
 \[
-|\{y\in S: y\not\sim w\}| \leq 94\epsilon n
+|\{y\in S: y\not\sim w\}| \leq 94\epsilon n .
 \]
-for $n$ large enough.
 
 \end{proof}
 \medskip
 
-For the rest of the section, let $w$ be the vertex from Lemma \ref{second vertex of large degree}. So $x=1$ and $w> 1-24\epsilon$, and both are adjacent to most of $S$. Our next goal is to show that all of the remaining vertices are adjacent to both $x$ and $w$. Let $B = N(x) \cap N(w)$ and $A = V(G) \setminus \{x\cup w \cup B\}$. We show that $A$ is empty in two steps: first we show the eigenvector entries of vertices in $A$ are as small as we need, which we then use to show that if there is a vertex in $A$ then $G$ is not extremal.
+In the rest of the section, let $w$ be the vertex from Lemma \ref{second vertex of large degree}. So $\mathbf{v}_x=1$ and $\mathbf{v}_w> 1-24\epsilon$, and both are adjacent to most of $S$. Our next goal is to show that the remaining vertices are adjacent to both $x$ and $w$. Let $B = N(x) \cap N(w)$ and $A = V(G) \setminus \{x\cup w \cup B\}$. We show that $A$ is empty in two steps: first we show the eigenvector entries of vertices in $A$ are as small as we need, which we then use to show that if there is a vertex in $A$ then $G$ is not extremal.
 
 \begin{lemma}\label{eigenvector entries of A small}
-Let $v\in V(G) \setminus \left\{ x,w \right\}$. Then $v < \frac{1}{10}$.
+Let $v\in V(G) \setminus \left\{ x,w \right\}$. Then $\mathbf{v}_v < \frac{1}{10}$.
 \end{lemma}
 
 \begin{proof}
 We first show that the sum over all eigenvector entries in $A$ is small, and then we show that each eigenvector entry is small. Note that for each $v\in A$, $v$ is adjacent to at most one of $x$ and $w$, and is adjacent to at most $2$ vertices in $B$ (otherwise $G$ would contain a $K_{3,3}$ and would not be planar). Thus
 \[
-\lambda_1\sum_{v\in A} v \leq \sum_{v\in A} d_v \leq 3|A| +2e(A) < 9|A|,
+\lambda_1\sum_{v\in A} \mathbf{v}_v \leq \sum_{v\in A} d_v \leq 3|A| +2e(A) < 9|A|,
 \]
-where the last inequality is using that $e(A) < 3|A|$ since $A$ induces a planar graph. Now, since $|L| < \frac{3\sqrt{2n-4}}{\epsilon} < 1\epsilon n$ for $n$ large enough, we have $|A| \leq (14+94+1)\epsilon n$ (by Lemma \ref{second vertex of large degree}) . Therefore 
+where the last inequality holds by $e(A) < 3|A|$ since $A$ induces a planar graph. Now, since $|L| < \frac{3\sqrt{2n-4}}{\epsilon} < \epsilon n$ for $n$ large enough, we have $|A| \leq (14+94+1)\epsilon n$ (by Lemma \ref{second vertex of large degree}) . Therefore 
 \[
-\sum_{v\in A} v \leq \frac{9\cdot 109 \cdot \epsilon n}{\sqrt{2n-4}}.
+\sum_{v\in A} \mathbf{v}_v \leq \frac{9\cdot 109 \cdot \epsilon n}{\sqrt{2n-4}}.
 \]
 
 Now any $v\in V(G) \setminus \left\{ x,w \right\}$ is adjacent to at most 4 vertices in $B \cup \left\{x,w \right\}$, as otherwise we would have a $K_{3,3}$
 as above.  So we get
 \[
-\lambda_1v = \sum_{u\sim v} u \leq 4 + \sum_{\substack{u\sim v\\ u\in A}} u \leq 4 + \sum_{u\in A} u \leq C\epsilon\sqrt{n}
+\lambda_1\mathbf{v}_v = \sum_{u\sim v} \mathbf{v}_u \leq 4 + \sum_{\substack{u\sim v\\ u\in A}} \mathbf{v}_u \leq 4 + \sum_{u\in A} \mathbf{v}_u \leq C\epsilon\sqrt{n},
 \]
 where $C$ is an absolute constant not depending on $\epsilon$. Dividing both sides by $\lambda_1$ and choosing $\epsilon$ small enough yields the result.
 \end{proof}
 
-We use the fact that the eigenvector entries in $A$ are small to show that if $v\in A$ (ie $v$ is not adjacent to both $x$ and $w$), then removing all edges from $v$ and adding edges from it to $x$ and $w$ increases the spectral radius, showing that $A$ must be empty. To do this, we must be able to add edges from a vertex to both $x$ and $w$ and have the resulting graph remain planar. This is accomplished by the following lemma.
+We use the fact that the eigenvector entries in $A$ are small to show that if $v\in A$ (i.e. $v$ is not adjacent to both $x$ and $w$), then removing all edges from $v$ and adding edges from it to $x$ and $w$ increases the spectral radius, showing that $A$ must be empty. To do this, we must be able to add edges from a vertex to both $x$ and $w$ and have the resulting graph remain planar. This is accomplished by the following lemma.
 
 \begin{lemma}\label{x connected to w}
 If $G$ is extremal, then $x\sim w$.
@@ -420,7 +420,7 @@ of $G$, we also know that $G$ has precisely $3n-6$ edges, and by Euler's formula
 Now we obtain a bound on the number of faces that $x$ and $w$ must be incident to.  Let $X$ be the set of edges incident to $x$.  Each edge in $G$ is incident to precisely two faces, and each face can be incident to at most two edges in $X$ (again, since each face is a triangle by maximality).  So $x$ is incident to at least $|X| = d_x \geq (1-\delta)n$ faces.  Similarly, $w$ is incident to at least $(1-\delta)n$ faces. 
 
 
-Let $F_1$ be the set of faces that are incident to $x$, and then let $F_2$ be the set of faces that are not incident to $x$, but which share an edge with a face in $F_1$.  Let $F = F_1 \cup F_2$.  We have that $|F_1| \geq (1-\delta)n$.  Now each
+Let $F_1$ be the set of faces that are incident to $x$, and then let $F_2$ be the set of faces that are not incident to $x$, but which share an edge with a face in $F_1$.  Let $F = F_1 \cup F_2$.  We have $|F_1| \geq (1-\delta)n$.  Now each
 face in $F_1$ shares an edge with exactly three other faces:  if two faces shared two edges, then since each face is a triangle
 both faces must be bounded by the same three edges;  this cannot happen, except in the degenerate case when $n=3$.  At most two of these three faces are in $F_1$, and so $|F_2| \geq |F_1| / 3 \geq (1-\delta)n / 3$.  Hence, $|F| \geq (1-\delta)4n / 3$, and so the sum of the number of faces
 in $F$ and the number of faces incident to  $w$ is larger than $2n-4$.  In 
@@ -441,20 +441,21 @@ $A$ is empty.
 \end{lemma}
 
 \begin{proof}
-By way of contradiction, assume $A$ is nonempty. $A$ induces a planar graph, therefore if $A$ is nonempty, then there is a $v\in A$ such that $|N(v)\cap A| < 6$. Further, $v$ has at most $2$ neighbors in $B$ (otherwise $G$ would contain a $K_{3,3}$. Recall that $\textbf{v}$ is the principal eigenvector for the adjacency matrix of $G$. Let $H$ be the graph with vertex set $V(G) \cup \{v'\} \setminus \{v\}$ and edge set $E(H) = E(G\setminus\{v\}) \cup \{v'x, v'w\}$. By Lemma \ref{x connected to w}, $H$ is a planar graph. Then 
+Assume that $A$ is nonempty. $A$ induces a planar graph, therefore if $A$ is nonempty, then there is a $v\in A$ such that $|N(v)\cap A| < 6$. Further, $v$ has at most $2$ neighbors in $B$ (otherwise $G$ would contain a $K_{3,3}$. Recall that $\textbf{v}$ is the principal eigenvector for the adjacency matrix of $G$. Let $H$ be the graph with vertex set $V(G) \cup \{v'\} \setminus \{v\}$ and edge set $E(H) = E(G\setminus\{v\}) \cup \{v'x, v'w\}$. By Lemma \ref{x connected to w}, $H$ is a planar graph. Then 
 \begin{align*}
 \textbf{v}^T \textbf{v}\lambda_1(H) &\geq \textbf{v}^T A(H) \textbf{v} & \\
-& = \textbf{v}^T A(G) \textbf{v} - 2\sum_{z\sim v} vz + 2v(w+x) & \\
-& \geq \textbf{v}^T A(G) \textbf{v} - 14\cdot v \cdot \frac{1}{10} - 2\sum_{\substack{z\sim v\\ z\in \{w,x\}}} vz + 2v(w+x) & \mbox{(by Lemma \ref{eigenvector entries of A small})} \\
-& \geq \textbf{v}^T A(G) \textbf{v} - \frac{14}{10}v + 2vw & \mbox{($|N(v)\cap \{x,w\}| \leq 1$)} \\
-& > \textbf{v}^T A(G) \textbf{v} & \mbox{(as $w>7/10$)}\\
+& = \textbf{v}^T A(G) \textbf{v} - 2\sum_{z\sim v} \mathbf{v}_v\mathbf{v}_z + 2\mathbf{v}_v(\mathbf{v}_w+\mathbf{v}_x) & \\
+& \geq \textbf{v}^T A(G) \textbf{v} - 14\cdot \mathbf{v}_v \cdot \frac{1}{10} - 2\sum_{\substack{z\sim v\\ z\in \{w,x\}}} \mathbf{v}_v\mathbf{v}_z + 2\mathbf{v}_v(\mathbf{v}_w+\mathbf{v}_x) & \mbox{(by Lemma \ref{eigenvector entries of A small})} \\
+& \geq \textbf{v}^T A(G) \textbf{v} - \frac{14}{10}\mathbf{v}_v + 2\mathbf{v}_v\mathbf{v}_w & \mbox{($|N(v)\cap \{x,w\}| \leq 1$)} \\
+& > \textbf{v}^T A(G) \textbf{v} & \mbox{(as $\mathbf{v}_w>7/10$)}\\
 &= \textbf{v}^T\textbf{v} \lambda_1(G).
 \end{align*}
-So $\lambda_1(H) > \lambda_1(G)$ and $H$ is planar, ie $G$ is not extremal, a contradiction.
+So $\lambda_1(H) > \lambda_1(G)$ and $H$ is planar, i.e. $G$ is not extremal, a contradiction.
 \end{proof}
 
 
-We now have that if $G$ is extremal, then $K_2+I_{n-2}$, an edge joined to an independent set of size $n-2$, is a subgraph of $G$. Finishing the proof is straightforward.
+We now have that if $G$ is extremal, then $K_2+I_{n-2}$, the join of an edge and an independent set of size $n-2$, is a subgraph of $G$. Finishing the proof is straightforward.
+
 
 \subsection{Proof of Main Theorem}
 
@@ -463,8 +464,9 @@ For $n\geq N_0$, the unique planar graph on $n$ vertices with maximum spectral r
 \end{theorem}
 
 \begin{proof}
-By Lemmas \ref{x connected to w} and \ref{A empty}, we have that $x$ and $w$ have degree $n-1$. We now look at the set $B = V(G) \setminus \{x,w\}$. For $v\in B$, we have $|N(v) \cap B| \leq 2$, otherwise $G$ contains a copy of $K_{3,3}$. Therefore, the graph induced by $B$ is a disjoint union of paths, cycles, and isolated vertices. However, if there is some cycle $C$ in the graph induced by $B$, then $C \cup\{x,w\}$ is a subdivision of $K_5$. So the graph induced by $B$ is a disjoint union of paths and isolated vertices. However, if $B$ does not induce a path on $n-2$ vertices, then $G$ is a strict subgraph of $K_2 + P_{n-2}$, and we would have $\lambda_1(G) < \lambda_1(K_2 + P_{n-2})$. Since $G$ is extremal, $B$ must induce $P_{n-2}$ and so $G = K_2 + P_{n-2}$.
+By Lemmas \ref{x connected to w} and \ref{A empty}, $x$ and $w$ have degree $n-1$. We now look at the set $B = V(G) \setminus \{x,w\}$. For $v\in B$, we have $|N(v) \cap B| \leq 2$, otherwise $G$ contains a copy of $K_{3,3}$. Therefore, the graph induced by $B$ is a disjoint union of paths, cycles, and isolated vertices. However, if there is some cycle $C$ in the graph induced by $B$, then $C \cup\{x,w\}$ is a subdivision of $K_5$. So the graph induced by $B$ is a disjoint union of paths and isolated vertices. However, if $B$ does not induce a path on $n-2$ vertices, then $G$ is a strict subgraph of $K_2 + P_{n-2}$, and we would have $\lambda_1(G) < \lambda_1(K_2 + P_{n-2})$. Since $G$ is extremal, $B$ must induce $P_{n-2}$ and so $G = K_2 + P_{n-2}$.
 \end{proof}
+
 
 This chapter is based on part of the paper ``Three conjectures in extremal spectral graph theory'',
  \cite{TaitTobin2017}, to appear in \textit{Journal of Combinatorial Theory, Series B},

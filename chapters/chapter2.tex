@@ -47,7 +47,7 @@ A \textit{pineapple graph} is a clique with pendant edges added to a single vert
 Aouchiche et al \cite{AouchicheEtAl2008} conjectured that the extremal connected
 graph with respect to the invariant $\lambda_1 - d$ is a pineapple graph.  We
 show this for sufficiently large $n$.
-\begin{theorem}\label{main_theorem}
+\begin{theorem}
   For sufficiently large $n$, the connected graph $G$ on $n$
   that maximizes $\lambda_1 - d$ is a pineapple graph.
 \end{theorem}
@@ -78,25 +78,14 @@ Bell showed that $\epsilon(G)$ and $var(G)$ are incomparable in general
 
 Throughout this section $G$ will be a connected simple graph on $n$ vertices.
 The eigenvectors and eigenvalues of $G$ are those of the adjacency
-matrix $A$ of $G$.  The vector $v$ will be the eigenvector corresponding
-to the largest eigenvalue $\lambda_1$,  and we take $v$ to be scaled
+matrix $A$ of $G$.  The vector $\mathbf{v}$ will be the eigenvector corresponding
+to the largest eigenvalue $\lambda_1$,  and we take $\mathbf{v}$ to be scaled
 so that its largest entry is $1$.  Let $x_1$ and $x_k$
 be the vertices with smallest and largest eigenvector entries respectively, and
 if several such vertices exist then we pick any of them arbitrarily.
 Let $x_1, x_2, \cdots, x_k$ be a shortest path between $x_1$ and
-$x_k$.  Let $\gamma(G)$ be the principal ratio of $G$.  We will abuse
-notation so that for any vertex $x$, the symbol $x$ will refer also to $v(x)$,
-the value of the eigenvector entry of $x$.  For example, with this notation
-the eigenvector equation becomes
+$x_k$.  Let $\gamma(G)$ be the principal ratio of $G$.
 
- \[ \lambda v = \sum_{w \sim v} w. \]
-
-%\noindent We will make use of the Rayleigh quotient characterization of the
-%largest eigenvalue of a graph,
-
-%\begin{equation}\label{rayleigh}
-%  \lambda_1(G) = \max_{0 \neq v} \frac{v^T A(G) v}{v^t v} 
-%\end{equation}
 
 
 Recall that the vertices $v_1, v_2, \cdots, v_m$ are a 
@@ -108,30 +97,30 @@ the vertices $v_2, \cdots, v_{m-1}$ have degree $2$
 \begin{lemma}\label{path_bound}
   If $\lambda_1 \geq 2$ and $\sigma = (\lambda_1 + \sqrt{\lambda_1^2 - 4})/2$, then for
   $1 \leq j \leq k$,
-   \[ \gamma(G) \leq \frac{\sigma^j - \sigma^{-j}}{\sigma - \sigma^{-1}} x_j^{-1}. \]
+   \[ \gamma(G) \leq \frac{\sigma^j - \sigma^{-j}}{\sigma - \sigma^{-1}} \mathbf{v}_{x_j}^{-1}. \]
 Moreover we have equality if the vertices $x_1, x_2, \cdots, x_{j}$ are a pendant path.
   
 \end{lemma}
 \begin{proof}
   We have the following system of inequalities
    \begin{eqnarray*}
-     \lambda_1 x_1 & \geq & x_2 \\
-     \lambda_1 x_2 & \geq & x_1 + x_3 \\
-     \lambda_1 x_3 & \geq & x_2 + x_4 \\
+     \lambda_1 \mathbf{v}_{x_1} & \geq & \mathbf{v}_{x_2} \\
+     \lambda_1 \mathbf{v}_{x_2} & \geq & \mathbf{v}_{x_1} + \mathbf{v}_{x_3} \\
+     \lambda_1 \mathbf{v}_{x_3} & \geq & \mathbf{v}_{x_2} + \mathbf{v}_{x_4} \\
      \vdots & & \vdots\\
-     \lambda_1 x_{j-1} & \geq & x_j + x_{j-2}
+     \lambda_1 \mathbf{v}_{x_{j-1}} & \geq & \mathbf{v}_{x_j} + \mathbf{v}_{x_{j-2}} .
    \end{eqnarray*}
  The first inequality implies that
-  \[ x_1 \geq \frac{1}{\lambda_1} x_2\]
+  \[ \mathbf{v}_{x_1} \geq \frac{1}{\lambda_1} \mathbf{v}_{x_2}.\]
  Plugging this into the second equation and rearranging gives
-  \[ x_2 \geq \frac{\lambda_1}{\lambda_1^2 - 1} x_3 \]
+  \[ \mathbf{v}_{x_2} \geq \frac{\lambda_1}{\lambda_1^2 - 1} \mathbf{v}_{x_3}. \]
  Now assume that
-  \[ x_i \geq \frac{u_{i-1}}{u_i} x_{i+1}. \]
- with $u_j$ positive for all $j<i$.  Then
-  \[ \lambda_1 x_{i+1} \geq x_{i} + x_{i+2} \]
+  \[ \mathbf{v}_{x_i} \geq \frac{{u_{i-1}}}{{u_i}} \mathbf{v}_{x_{i+1}}, \]
+ with some positive constants ${u_j}$ for all $j<i$.  Then
+  \[ \lambda_1 \mathbf{v}_{x_{i+1}} \geq \mathbf{v}_{x_{i}} + \mathbf{v}_{x_{i+2}} \]
  implies that
-  \[ x_{i+1} \geq \frac{u_i}{\lambda_1 u_i - u_{i-1}} x_{i+2}. \]
- where $\lambda_1 u_i - u_{i-1}$ must be positive because  $x_j$
+ \[ \mathbf{v}_{x_{i+1}} \geq \frac{{u_i}}{\lambda_1 {u_i} - {u_{i-1}}} \mathbf{v}_{x_{i+2}}, \]
+ where $\lambda_1 {u_i} - {u_{i-1}}$ must be positive because  $\mathbf{v}_{x_j}$
  is positive for all $j$.
  Therefore the coefficients $u_i$ satisfy the recurrence
   \[ u_{i+1} = \lambda_1 u_i - u_{i-1}\]
@@ -140,9 +129,9 @@ Moreover we have equality if the vertices $x_1, x_2, \cdots, x_{j}$ are a pendan
   \[ u_i = \frac{\sigma^{i+1} - \sigma^{-i-1}}{\sigma - \sigma^{-1}} \]
  In particular, $u_i$ is always positive, a fact implicitly
  used above.  Finally this gives,
-  \[ x_1 \geq \frac{u_0}{u_1} x_2 \geq \frac{u_0}{u_1} \cdot \frac{u_1}{u_2} x_3 \geq \cdots \geq \frac{x_j}{u_{j-1}} \]
+  \[ \mathbf{v}_{x_1} \geq \frac{u_0}{u_1} \mathbf{v}_{x_2} \geq \frac{u_0}{u_1} \cdot \frac{u_1}{u_2} \mathbf{v}_{x_3} \geq \cdots \geq \frac{\mathbf{v}_{x_j}}{u_{j-1}} \]
  Hence
-  \[ \gamma(G) = \frac{x_k}{x_1} = \frac{1}{x_1} \leq \frac{\sigma^j - \sigma^{-j}}{\sigma - \sigma^{-1}} x_j^{-1} \]
+  \[ \gamma(G) = \frac{\mathbf{v}_{x_k}}{\mathbf{v}_{x_1}} = \frac{1}{\mathbf{v}_{x_1}} \leq \frac{\sigma^j - \sigma^{-j}}{\sigma - \sigma^{-1}} \mathbf{v}_{x_j}^{-1} \]
  If these vertices are a pendant path, then we have equality throughout.
 \end{proof}
 
@@ -183,11 +172,12 @@ We now give a sketch of the proof that is contained in Section~\ref{sec_proof}.
 Let $G$ be the graph with maximal principal ratio among all connected
 graphs on $n$ vertices, and let $k$ be the number of vertices in a
 shortest path between the vertices with smallest and largest eigenvalue
-entries. As above, let $x_1,\cdots, x_k$ be the vertices of the shortest path, where $\gamma(G) = x_k / x_1$.  Let $C$ be the set of vertices not on this shortest
+entries. As above, let $x_1,\cdots, x_k$ be the vertices of the shortest path, where
+$\gamma(G) = \mathbf{v}_{x_k} / \mathbf{v}_{x_1}$.  Let $C$ be the set of vertices not on this shortest
 path, so $|C| = n-k$.  Note that there is no graph with $n-k=1$, as the endpoints of a path have the same principal eigenvector entry.  Also
 $\lambda_1(G) \geq 2$, otherwise $P_{n-2} \cdot K_3$ would have larger
 principal ratio.  Finally note that $k$ is strictly larger than $1$,
-otherwise $x_k = x_1$ and $G$ would be regular.
+otherwise $\mathbf{v}_{x_k} = \mathbf{v}_{x_1}$ and $G$ would be regular.
 
 
 \begin{lemma}\label{max_lambda}
@@ -214,8 +204,8 @@ otherwise $x_k = x_1$ and $G$ would be regular.
   path.
 \end{lemma}
 \begin{proof}
-  By our choice of scaling, $x_k = 1$.  From lemma~\ref{max_lambda}
-   \[ n-k < \lambda_1(G) = \sum_{y \sim  x_k} y \leq |N(x_k)|. \]
+  By our choice of scaling, $\mathbf{v}_{x_k} = 1$.  From lemma~\ref{max_lambda}
+   \[ n-k < \lambda_1(G) = \sum_{y \sim  x_k} \mathbf{v}_{y} \leq |N(x_k)|. \]
   Now $|N(x_k)|$ is an integer, so we have $|N(x_k)| \geq n-k+1$.
   Moreover because $x_1, x_2, \cdots, x_k$ is an induced path, we
   must have that $|N(x_k)| = n-k+1$ exactly, and hence the
@@ -228,7 +218,7 @@ otherwise $x_k = x_1$ and $G$ would be regular.
 For the extremal graph $G$, we have $n-k = (1+o(1))\frac{n}{\log n}$.
 \end{lemma}
 \begin{proof}
-Let $H$ be the graph $P_j \cdot K_{n-j+1}$ where $ j = \left\lfloor n - \frac{n}{\log n}\right\rfloor$, and let $G$ be the connected graph on $n$ vertices with maximum principal ratio. Let $x_1,\cdots, x_k$ be a shortest path from $x_1$ to $x_k$ where $\gamma(G) = \frac{x_k}{x_1}$. By lemma \ref{connect_every}, we have
+Let $H$ be the graph $P_j \cdot K_{n-j+1}$ where $ j = \left\lfloor n - \frac{n}{\log n}\right\rfloor$, and let $G$ be the connected graph on $n$ vertices with maximum principal ratio. Let $x_1,\cdots, x_k$ be a shortest path from $x_1$ to $x_k$ where $\gamma(G) = \frac{\mathbf{v}_{x_k}}{\mathbf{v}_{x_1}}$. By lemma \ref{connect_every}, we have
 \[
 \lambda_1(G) \leq \Delta(G) \leq n-k+1.
 \]
@@ -258,12 +248,12 @@ the principal ratio, and so by maximality these edges must already be
 present in $G$.  We have established that the vertices $x_1, x_2, \cdots, x_{k-2}$
 are a pendant path, and so we have
 \begin{equation}\label{pr_form}
- \gamma(G) = \frac{\sigma^{k-2} - \sigma^{-k+2}}{\sigma-\sigma^{-1}} \frac{1}{x_{k-2}}
+ \gamma(G) = \frac{\sigma^{k-2} - \sigma^{-k+2}}{\sigma-\sigma^{-1}} \frac{1}{\mathbf{v}_{x_{k-2}}}
 \end{equation}
 We will not add any edges that affect this path, and so the above equality will
 remain true.   
 The change in $\gamma$ is then completely determined by the change
-in $\lambda_1$ and the change in $x_{k-2}$.  The next lemma gives conditions
+in $\lambda_1$ and the change in $\mathbf{v}_{x_{k-2}}$.  The next lemma gives conditions
 on these two parameters under which $\gamma$ will increase or decrease.
 
 \begin{lemma}\label{change}
@@ -273,11 +263,11 @@ Let $x_1, x_2, \cdots, x_{m-1}$ form a pendant path
   where the addition of these edges does not affect which vertex
   has largest principal eigenvector entry.  Let
   $\lambda_1^+$ be the largest eigenvalue of $G_+$ with leading eigenvector
-  entry for vertex $x$ denoted $x^+$, also normalized to have maximum
+  entry for vertex $x$ denoted $\mathbf{v}_x^+$, also normalized to have maximum
   entry one.  
   Define $\delta_1$ and $\delta_2$ such that
   $\lambda_1^+ = (1 + \delta_1) \lambda_1$ and
-  $x_{m-1}^+ = (1 + \delta_2) x_{m-1}$.  Then 
+  $\mathbf{v}_{x_{m-1}}^+ = (1 + \delta_2) \mathbf{v}_{x_{m-1}}$.  Then 
   \begin{itemize}
      \item $\gamma(G_+) > \gamma(G)$ whenever $\delta_1 > 4 \delta_2 / n$
      \item $\gamma(G_+) < \gamma(G)$ whenever $\delta_1 \exp(2 \delta_1 \lambda_1 \log n ) <  \delta_2 / 3 n$.
@@ -324,17 +314,17 @@ Let $x_1, x_2, \cdots, x_{m-1}$ form a pendant path
 
 \begin{lemma}\label{large_nbds}
   For every subset of $U$ of $N(x_k)$, we have
-   \[ |U| - 1 < \sum_{y \in U} y \leq |U|. \]
+   \[ |U| - 1 < \sum_{y \in U} \mathbf{v}_y \leq |U|. \]
   An immediate consequence is that there is at most one
   vertex in the neighborhood of $x_k$ with eigenvector
   entry smaller than $1/2$.
 \end{lemma}
 \begin{proof}
-  The upper bound follows from $y \leq 1$, and the lower bound from
+  The upper bound follows from $\mathbf{v}_y \leq 1$, and the lower bound from
   the inequalities
-   \[ \sum_{y \in N(x_k) \setminus U} y  \leq |N(x_k)| - |U|\]
+   \[ \sum_{y \in N(x_k) \setminus U} \mathbf{v}_y  \leq |N(x_k)| - |U|\]
   and
-   \[ \sum_{y \in N(x_k)} y = \lambda_1(G) > |N(x_k)| - 1 .\]
+   \[ \sum_{y \in N(x_k)} \mathbf{v}_y = \lambda_1(G) > |N(x_k)| - 1 .\]
 \end{proof}
 
 \begin{lemma}\label{k_2_lemma}
@@ -343,10 +333,10 @@ Let $x_1, x_2, \cdots, x_{m-1}$ form a pendant path
 \begin{proof}
   Assume to the contrary.  Let $U = N(x_{k-2}) \cap N(x_{k})$.  Then
   $|U| \geq 2$, so by lemma~\ref{large_nbds} we have
-   \[ \sum_{y \in U} y > |U| - 1 \geq 1 . \]
+   \[ \sum_{y \in U} \mathbf{v}_y > |U| - 1 \geq 1 . \]
   Now, by the same argument as the in the proof of lemma~\ref{path_bound},
   we have that
-   \[ \gamma(G) = \frac{\sigma^{k-1} - \sigma^{-k+1}}{\sigma - \sigma^{-1}} \left( \sum_{y \in U} y \right)^{-1} \]
+   \[ \gamma(G) = \frac{\sigma^{k-1} - \sigma^{-k+1}}{\sigma - \sigma^{-1}} \left( \sum_{y \in U} \mathbf{v}_y \right)^{-1} \]
   Let $H = P_{k-1} \cdot K_{n-k+2}$.  Then by maximality of $\gamma(G)$ we have
   \begin{equation*}
    \frac{\sigma^{k-1} - \sigma^{-k+1}}{\sigma - \sigma^{-1}} > \gamma(G) \geq \gamma(H) = \frac{\sigma_H^{k-1} - \sigma_H^{-k+1}}{\sigma_H - \sigma_H^{-1}} 
@@ -359,7 +349,7 @@ Let $x_1, x_2, \cdots, x_{m-1}$ form a pendant path
 We now know that $x_1, x_2, \cdots, x_{k-1}$ is a pendant path in $G$, and
 so equation~\ref{pr_form} becomes
 \begin{equation}\label{pr_form2}
- \gamma(G) = \frac{\sigma^{k-1} - \sigma^{-k+1}}{\sigma-\sigma^{-1}} \frac{1}{x_{k-1}}
+ \gamma(G) = \frac{\sigma^{k-1} - \sigma^{-k+1}}{\sigma-\sigma^{-1}} \frac{1}{\mathbf{v}_{x_{k-1}}}
 \end{equation}
 
 \begin{lemma}\label{k_1_pre_lemma}
@@ -369,50 +359,51 @@ so equation~\ref{pr_form} becomes
   Assume to the contrary, so throughout this proof we assume that
   the degree of $x_{k-1}$ is at least $11 |C| / \sqrt{\log n}$.
   Let $G_+$ the graph obtained form $G$ with
-  an additional edge from $x_{k-1}$ to a vertex $z \in C$ with $z \geq 1/2$.
-  Let $\lambda^+_1 = \lambda_1(G_+)$ and  let $x^+$ be the principal eigenvector
+  an additional edge from $x_{k-1}$ to a vertex $z \in C$ with $\mathbf{v}_z \geq 1/2$.
+  Let $\lambda^+_1 = \lambda_1(G_+)$ and  let $\mathbf{v}_{x}^+$ be the principal eigenvector
   entry of vertex $x$ in $G_+$, where this eigenvector is normalized to have
-  $x_{k}^+ = 1$.
+  $\mathbf{v}_{x_{k}}^+ = 1$.
 
 
-  \noindent \textbf{Change in $\lambda_1$}: By equation~\ref{rayleigh}, we
-  have $\lambda_1^+ - \lambda_1 \geq 2 \frac{x_{k-1} z}{||v||^2_2}$.
-  A crude upper bound on $||v||_2^2$ is
-   \[ ||v||_2^2 \leq 1 + \sum_{y \sim x_{k}} y + \frac{2}{\lambda_1} + \frac{4}{\lambda_1^2} + \cdots < 2 \lambda_1 \]
-  We also have that $z \geq 1/2$ so
-   \[ \lambda_1^+ \geq \left( 1 + \frac{x_{k-1}}{2\lambda_1^2} \right) \lambda_1 .\]
+  \noindent \textbf{Change in $\lambda_1$}: By equation~\ref{rayleigh quotient}, we
+  have $\lambda_1^+ - \lambda_1 \geq 2 \frac{\mathbf{v}_{x_{k-1}} \mathbf{v}_z}{||\mathbf{v}||^2_2}$.
+  A crude upper bound on $||\mathbf{v}||_2^2$ is
+   \[ ||\mathbf{v}||_2^2 \leq 1 + \sum_{y \sim x_{k}} \mathbf{v}_y + \frac{2}{\lambda_1} + \frac{4}{\lambda_1^2} + \cdots < 2 \lambda_1 \]
+  We also have that $\mathbf{v}_z \geq 1/2$ so
+   \[ \lambda_1^+ \geq \left( 1 + \frac{\mathbf{v}_{x_{k-1}}}{2\lambda_1^2} \right) \lambda_1 .\]
 
-  \noindent \textbf{Change in $x_{k-1}$}:  Let $U = N(x_{k-1} \cap C)$.
+  \noindent \textbf{Change in $\mathbf{v}_{x_{k-1}}$}:  Let $U = N(x_{k-1} \cap C)$.
   By the eigenvector equation we have
   \begin{eqnarray*}
-    x_{k-1} & = & \frac{1}{\lambda_1} \left( x_{k-2} + x_{k} + \sum_{y \in U} y \right) \\
-    x_{k-1}^+ & = & \frac{1}{\lambda_1^+} \left( x_{k-2}^+ + x_{k}^+ + z^+ + \sum_{y \in U} y^+ \right)    
+    \mathbf{v}_{x_{k-1}} & = & \frac{1}{\lambda_1} \left( \mathbf{v}_{x_{k-2}} + \mathbf{v}_{x_{k}} + \sum_{y \in U} \mathbf{v}_y \right) \\
+    \mathbf{v}_{x_{k-1}}^+ & = & \frac{1}{\lambda_1^+} \left( \mathbf{v}_{x_{k-2}}^+ + \mathbf{v}_{x_{k}}^+ + \mathbf{v}_z^+ + \sum_{y \in U} \mathbf{v}_y^+ \right)    
   \end{eqnarray*}
-  Subtracting these, and using that $\lambda_1 < \lambda_1^+$ and $x_k = x_k^+ = 1$, we get
-   \[ x_{k-1}^+ - x_{k-1} \leq \frac{1}{\lambda_1} \left( x_{k-2}^+ - x_{k-2} + z^+ + \sum_{y \in U} y^+ - y\right) .\]
-  By lemma~\ref{large_nbds}, we have $\sum_{y \in U} y^+ - y \leq 1$.  We also have
-  $x_{k-2}^+ - x_{k-2} < 1$ and $z^+ \leq 1$.  Hence $x_{k-1}^+ - x_{k-1} \leq 3 / \lambda_1$,
+  Subtracting these, and using that $\lambda_1 < \lambda_1^+$ and $\mathbf{v}_{x_k} = \mathbf{v}_{x_k}^+ = 1$, we get
+   \[ \mathbf{v}_{x_{k-1}}^+ - \mathbf{v}_{x_{k-1}} \leq \frac{1}{\lambda_1} \left( \mathbf{v}_{x_{k-2}}^+ - \mathbf{v}_{x_{k-2}} + \mathbf{v}_{z}^+ + \sum_{y \in U} \mathbf{v}_{y}^+ - \mathbf{v}_{y}\right) .\]
+  By lemma~\ref{large_nbds}, we have $\sum_{y \in U} \mathbf{v}_{y}^+ - \mathbf{v}_y \leq 1$.  We also have
+  $\mathbf{v}_{x_{k-2}}^+ - \mathbf{v}_{x_{k-2}} < 1$ and $\mathbf{v}_z^+ \leq 1$.  Hence
+  $\mathbf{v}_{x_{k-1}}^+ - \mathbf{v}_{x_{k-1}} \leq 3 / \lambda_1$,
   or
-   \[ x_{k-1}^+ \geq \left( 1 + \frac{3}{\lambda_1 x_{k-1}} \right) x_{k-1}\]
+   \[ \mathbf{v}_{x_{k-1}}^+ \geq \left( 1 + \frac{3}{\lambda_1 \mathbf{v}_{x_{k-1}}} \right) \mathbf{v}_{x_{k-1}}\]
 
 
-  We can only apply lemma~\ref{change} if $x_{k}^+$ is the
+  We can only apply lemma~\ref{change} if $\mathbf{v}_{x_{k}}^+$ is the
   largest eigenvector entry in $G_+$.  So we must consider two cases.
 
 
   \noindent \textbf{Case 1:} If in
-  $G^+$ the largest eigenvector entry is still attained by vertex $x_k$, then
+  $G^+$ the largest eigenvector entry is still attained by vertex $\mathbf{v}_{x_k}$, then
   we can apply lemma~\ref{change}, and see that $\gamma(G^+) > \gamma(G)$
   if
-   \[ \frac{x_{k-1}}{2 \lambda_1^2} \geq \frac{12}{\lambda_1 x_{k-1} n} \]
+   \[ \frac{\mathbf{v}_{x_{k-1}}}{2 \lambda_1^2} \geq \frac{12}{\lambda_1 \mathbf{v}_{x_{k-1}} n} \]
   or equivalently
-   \[ x_{k-1}^2 \geq \frac{24 \lambda_1}{n} .\]
+   \[ \mathbf{v}_{x_{k-1}}^2 \geq \frac{24 \lambda_1}{n} .\]
   We have that $\lambda_1 = (1+o(1)) (n - n / \log(n))$, so it suffices for
   \begin{equation}\label{eqn_need}
-   x_{k-1} \geq \frac{5}{\sqrt{\log n}} .
+   \mathbf{v}_{x_{k-1}} \geq \frac{5}{\sqrt{\log n}} .
   \end{equation}
   We know that
-   \[ x_{k-1} > \frac{|U| - 1}{2 \lambda_1} .\]
+   \[ \mathbf{v}_{x_{k-1}} > \frac{|U| - 1}{2 \lambda_1} .\]
   By assumption
    \[ |U| + 2 = N(x_{k-1}) \geq 11 |C| / \sqrt{\log n} \]
   Equation~\ref{eqn_need} follows from this, so $\gamma(G^+) > \gamma(G)$.  
@@ -421,26 +412,26 @@ so equation~\ref{pr_form} becomes
   longer attained by vertex $x_k$.  It is easy to see that the largest
   eigenvector entry is not attained by a vertex with degree less than or equal
   to $2$, and comparing the neighborhood of any vertex in $C$ with the neighborhood
-  of $x_{k}$ we can see that $x_k \geq y$ for all $y \in C.$  So the
-  largest eigenvector entry must be attained by $x_{k-1}$.
+  of $x_{k}$ we can see that $\mathbf{v}_{x_k} \geq \mathbf{v}_y$ for all $y \in C$.  So the
+  largest eigenvector entry must be attained by $\mathbf{v}_{x_{k-1}}$.
   Then equation~\ref{pr_form2} no longer holds, instead we have
    \begin{equation}\label{case2} \gamma(G_+) = \frac{\sigma_+^{k-1} - \sigma_+^{-k+1}}{\sigma_+ - \sigma_+^{-1}} .\end{equation}
-Recall that in lemma~\ref{change} we determined the change from $\gamma(G_+)$ to $\gamma(G)$ by considering $\lambda^+_1 - \lambda_1$ and $x^+_{k-1}-x_{k-1}$. In this case, by \eqref{case2}, we must consider $\lambda^+_1 - \lambda_1$ and $1-x_{k-1}$.
-   Now if  $x_{k-1}^+ > x_k^+$ , then vertex $x_{k-1}$ in $G$
+Recall that in lemma~\ref{change} we determined the change from $\gamma(G_+)$ to $\gamma(G)$ by considering $\lambda^+_1 - \lambda_1$ and $\mathbf{v}_{x_{k-1}}^+ - \mathbf{v}_{x_{k-1}}$. In this case, by \eqref{case2}, we must consider $\lambda^+_1 - \lambda_1$ and $1-\mathbf{v}_{x_{k-1}}$.
+   Now if  $\mathbf{v}_{x_{k-1}}^+ > \mathbf{v}_{x_k}^+$ , then vertex $x_{k-1}$ in $G$
   is connected
   to all of $C$ except perhaps a single vertex.  Hence
   in $G$, the vertex $x_{k-1}$ is connected to all of $C$ except at most
   two vertices.  This gives the bound
-   \[ 1 - x_{k-1} \leq 3 / \lambda_1 \]
+   \[ 1 - \mathbf{v}_{x_{k-1}} \leq 3 / \lambda_1 \]
   and so as in the previous case, $\gamma(G_+) > \gamma(G)$.
 
 
   So in all cases, $x_{k-1}$ is connected to all vertices in $C$ that have
   eigenvector entry larger than $1/2$.  If all vertices in $C$ have eigenvector
   entry larger than $1/2$, then $x_{k-1}$ is connected to all of $C$,
-  and this implies that $x_{k-1} > x_k$, which is a contradiction.
+  and this implies that $\mathbf{v}_{x_{k-1}} > \mathbf{v}_{x_k}$, which is a contradiction.
   At most one vertex in $C$ is smaller than $1/2$, and so
-  there is a single vertex $z \in C$ with $z < 1/2$.  We will
+  there is a single vertex $z \in C$ with $\mathbf{v}_z < 1/2$.  We will
   quickly check that adding the edge $\{ x_{k-1}, z\}$ increases
   the principal ratio.  As before let $G_+$ be the graph obtained by
   adding this edge.  The largest eigenvector entry in $G_+$ is
@@ -448,18 +439,18 @@ Recall that in lemma~\ref{change} we determined the change from $\gamma(G_+)$ to
   of $x_{k}$.  
   As above, adding the edge $\{ z, x_{k}\}$ increases the spectral radius
   at least
-   \[ \lambda_1^+ > \left(1 + \frac{z}{2\lambda_1^2} \right) \lambda_1 \]
-  and we have $1 - x_{k-1} < 1 - z/\lambda_1$.  Applying lemma~\ref{change}
+   \[ \lambda_1^+ > \left(1 + \frac{\mathbf{v}_z}{2\lambda_1^2} \right) \lambda_1 \]
+  and we have $1 - \mathbf{v}_{x_{k-1}} < 1 - \mathbf{v}_z/\lambda_1$.  Applying lemma~\ref{change}
   we see that $\gamma(G_+) > \gamma(G)$, which is a contradiction.
   Finally we conclude that the degree of $x_{k-1}$ must be smaller than
   $11 |C| / \sqrt{\log n}$.
 \end{proof}
 
-We note that this lemma gives that $x_{k-1} < 1/2$ which implies that any vertex in $C$ has eigenvector entry larger than $1/2$.
+We note that this lemma gives that $\mathbf{v}_{x_{k-1}} < 1/2$ which implies that any vertex in $C$ has eigenvector entry larger than $1/2$.
 
 \begin{lemma}\label{k_1_lemma}
  The vertex $x_{k-1}$ has degree exactly $2$ in $G$.  It follows that
- $x_{k-1} < 2 / \lambda_1$.
+ $\mathbf{v}_{x_{k-1}} < 2 / \lambda_1$.
 \end{lemma}
 \begin{proof}
   Let $U = N(x_{k-1}) \cap C$, $c = |U|$.  If $c=0$ then we are done.
@@ -467,33 +458,33 @@ We note that this lemma gives that $x_{k-1} < 1/2$ which implies that any vertex
   $C$ edges.  We will show that $\gamma(G_-) > \gamma(G)$.
 
   \noindent \textbf{(1) Change in $\lambda_1$:}
-  We have by equation~\ref{rayleigh}, 
-   \[ \lambda_1 - \lambda^{-}_1 \leq 2c \frac{x_{k-1}}{||v||_2^2}\]
+  We have by equation~\ref{rayleigh quotient}, 
+   \[ \lambda_1 - \lambda^{-}_1 \leq 2c \frac{\mathbf{v}_{x_{k-1}}}{||\mathbf{v}||_2^2}\]
   By Cauchy--Schwarz,
-   \[ ||v||_2^2 > \sum_{x \in N(x_{k})} x^2 \geq \frac{\left(\sum_{x \in N(x_k)} x\right)^2}{|C|+1} \geq \frac{(n-k)^2}{n-k+1}\]
+   \[ ||\mathbf{v}||_2^2 > \sum_{x \in N(x_{k})} \mathbf{v}_x^2 \geq \frac{\left(\sum_{x \in N(x_k)} \mathbf{v}_x\right)^2}{|C|+1} \geq \frac{(n-k)^2}{n-k+1}\]
   We also have
-   \[ x_{k-1} \leq \frac{c+2}{\lambda_1}\]
+   \[ \mathbf{v}_{x_{k-1}} \leq \frac{c+2}{\lambda_1}\]
   Combining these we get
    \[ \lambda_1 - \lambda_1^{-} < \frac{9c^2}{\lambda_1 (n-k+1)} \Rightarrow \lambda_1 < \left(1 + \frac{9c^2}{\lambda_1 \lambda_1^{-} (n-k+1)}\right) \lambda_1^{-}\]
   We have $\lambda_1 \lambda_1^{-} > (n-k)^2$, so
   \[ \lambda_1 < \left( 1 + \frac{10c^2}{(n-k)^3} \right) \lambda_1^{-} \]
   
-  \noindent \textbf{(2) Change in $x_{k-1}$:}
-  At this point, we know that in $G_-$ the vertices $x_1,\cdots , x_{k}$ form a pendant path, and so by the proof of lemma~\ref{path_bound}, we have $x_{k-1}^- = (1+o(1)) / \lambda_1$. By the eigenvector equation and using that the vertices in $C$ have eigenvector entry at least $1/2$, we have $x_{k-1} > (1 + c/2) / \lambda_1$.  So
+  \noindent \textbf{(2) Change in $\mathbf{v}_{x_{k-1}}$:}
+  At this point, we know that in $G_-$ the vertices $x_1,\cdots , x_{k}$ form a pendant path, and so by the proof of lemma~\ref{path_bound}, we have $\mathbf{v}_{x_{k-1}}^- = (1+o(1)) / \lambda_1$. By the eigenvector equation and using that the vertices in $C$ have eigenvector entry at least $1/2$, we have $\mathbf{v}_{x_{k-1}} > (1 + c/2) / \lambda_1$.  So
    \begin{equation*}
-     x_{k-1} - x_{k-1}^{-} > \frac{1}{\lambda_1} \left( \frac{c}{2} + o(1) \right)
+     \mathbf{v}_{x_{k-1}} - \mathbf{v}_{x_{k-1}}^{-} > \frac{1}{\lambda_1} \left( \frac{c}{2} + o(1) \right)
    \end{equation*}
    In particular,
-    \[ x_{k-1} > \left( 1 + \frac{c}{3x_{k-1}^{-}\lambda_1}\right) x_{k-1}^-\]
+    \[ \mathbf{v}_{x_{k-1}} > \left( 1 + \frac{c}{3 \mathbf{v}_{x_{k-1}}^{-}\lambda_1}\right) \mathbf{v}_{x_{k-1}}^-\]
    Applying lemma~\ref{change}, it suffices now to show that
    \begin{equation}\label{eqn_need2}
-    \frac{10c^2}{(n-k)^3} \exp \left(2 \frac{10c^2}{(n-k)^3} \lambda_1^- \log n \right) < \frac{c}{9 x_{k-1}^- \lambda_1 n} .
+    \frac{10c^2}{(n-k)^3} \exp \left(2 \frac{10c^2}{(n-k)^3} \lambda_1^- \log n \right) < \frac{c}{9 \mathbf{v}_{x_{k-1}}^- \lambda_1 n} .
    \end{equation}
    Now
     \[ \frac{10c^2}{(n-k)^3} < 10 \frac{11^2}{\log(n)} \frac{|C|^2}{(n-k)^3} < \frac{11^3}{\log n} \frac{\log n}{n} = \frac{11^3}{n} .\]
     Similarly $2 \frac{10c^2}{(n-k)^3} \lambda_1^- \log n < 2\cdot 11^3$, so the lefthand side of equation~\ref{eqn_need2} is smaller than $C_0 / n$, where
    $C_0$ is an absolute constant.
-   For the righthand side, recall that $x_{k-1}^- \lambda_1 = 1 + o(1)$, and also that
+   For the righthand side, recall that $\mathbf{v}_{x_{k-1}}^- \lambda_1 = 1 + o(1)$, and also that
     \[ c > \frac{11}{\sqrt{\log n}} \left( \frac{n}{\log n} + o(1) \right) > \frac{10n}{\log^{3/2} n} .\]
    So the righthand side is larger than $1 / \log^{3/2}{n}$.  Hence for large
    enough $n$, the righthand side is larger than the lefthand side.
@@ -645,20 +636,20 @@ We remark that once we show that $G$ is a pineapple graph, the small question re
 
 
 \begin{lemma}\label{spectral radius and average degree}
-We have $\lambda_1(H) = \frac{n}{2} + c_1\sqrt{n}$ and $\frac{2e(H)}{n} = \frac{n}{4} + c_2\sqrt{n}$, where $|c_1|, |c_2|<1$.
+We have $\lambda_1(G) = \frac{n}{2} + c_1\sqrt{n}$ and $\frac{2e(G)}{n} = \frac{n}{4} + c_2\sqrt{n}$, where $|c_1|, |c_2|<1$.
 \end{lemma}
 
 \begin{proof}
-By eigenvalue interlacing, $\mathrm{PA}(p,q)$ has spectral radius at least $p-1$. A calculation shows 
-that for $H = \mathrm{PA}\left( \left\lceil \frac{n}{2}\right\rceil +1, \left\lfloor\frac{n}{2}\right\rfloor-1\right)$, we have 
+By eigenvalue interlacing, $\mathrm{PA}(p,q)$ has spectral radius at least $p-1$. Setting 
+ $H = \mathrm{PA}\left( \left\lceil \frac{n}{2}\right\rceil +1, \left\lfloor\frac{n}{2}\right\rfloor-1\right)$, we have 
 \[
 \lambda_1(H) - \frac{2e(H)}{n} \geq \frac{n}{4} - \frac{3}{2}.
 \]
-On the other hand, the eigenvector equation gives 
+On the other hand, an inequality of Hong \cite{Hong1988} gives 
 \[
-\lambda_1^2 = \sum_{y\sim x} \lambda_1 y = \sum_{y\sim x}\sum_{z\sim y} z \leq \sum_{y\sim x}d_y \leq 2e(G) - (n-1),
+\lambda_1^2 \leq 2e(G) - (n-1).
 \]
-where the last inequality follows because $G$ is connected. This gives
+It follows that
 \begin{equation}\label{lower bound on average degree}
 d \geq \frac{\lambda_1^2}{n} + 1 - \frac{1}{n}.
 \end{equation}
@@ -671,7 +662,7 @@ Next setting $\lambda_1 = \frac{n}{2} + c_1 \sqrt{n}$, \eqref{lower bound on ave
 \[
 d \geq \frac{n}{4} + c_1\sqrt{n} + c_1^2 + 1 - \frac{1}{n},
 \]
-whereas \eqref{tight bound on irregularity} gives
+whereas \eqref{tight bound on irregularity} implies
 \begin{equation}\label{d bar bound}
 d \leq \lambda_1 - \frac{n}{4} + \frac{3}{2}  = \frac{n}{4} + c_1\sqrt{n}  + \frac{3}{2}.
 \end{equation}
@@ -681,26 +672,26 @@ Together, these imply $|c_1| <1$ and prove both statements for $n$ large enough.
 \begin{lemma}\label{error in x neighborhood small}
 There exists a constant $c_3$ not depending on $n$ such that 
 \[
-0 \leq \frac{1}{|N(x)|} \sum_{y\sim x} d_y - \lambda_1 y \leq c_3\sqrt{n}.
+0 \leq \frac{1}{|N(x)|} \sum_{y\sim x} d_y - \lambda_1 \mathbf{v}_y \leq c_3\sqrt{n}.
 \]
 \end{lemma}
 
 \begin{proof}
-By the eigenvector equation
+From the inequality of Hong,
 \[
-\sum_{y\sim x} \lambda_1 y = \lambda_1^2 = \sum_{y\sim x}\sum_{z\sim y} z \leq \sum_{y\sim x} d_y \leq dn - (n-1).
+\sum_{y\sim x} \lambda_1 \mathbf{v}_y = \lambda_1^2 \leq dn - (n-1).
 \]
 Rearranging and applying Lemma \ref{spectral radius and average degree}, we have
 \[
-0\leq \sum_{y\sim x} \left( d_y - \lambda_1 y \right) = O\left(n^{3/2}\right).
+0\leq \sum_{y\sim x} \left( d_y - \lambda_1 \mathbf{v}_y \right) = O\left(n^{3/2}\right).
 \]
-By the eigenvector equation again, and because the first eigenvector is normalized with $x=1$, we have
+By equation~\eqref{eigenvector equation} again, and because the first eigenvector is normalized with $\mathbf{v}_x=1$, we have
 \[
-\lambda_1 = \sum_{y\sim x} y \leq d_x,
+\lambda_1 = \sum_{y\sim x} \mathbf{v}_y \leq d_x,
 \]
 giving $d_x = \Omega(n)$. Combining, we have 
 \[
-\frac{1}{|N(x)|} \sum_{y\sim x} \left( d_y - \lambda_1 y \right) = O\left(\sqrt{n}\right),
+\frac{1}{|N(x)|} \sum_{y\sim x} \left( d_y - \lambda_1 \mathbf{v}_y \right) = O\left(\sqrt{n}\right),
 \]
 where the implied constant is independent of $n$.
 \end{proof}
@@ -714,7 +705,7 @@ variational arguments to deduce that $G$ is exactly a pineapple graph.
 
 
 \begin{lemma}\label{u good}
- There exists a vertex $u\not=x$ with $u > 1- 2 \epsilon$ and $d_u - \lambda_1 u = O(\sqrt{n})$.  Moreover $d_u \geq \left( 1/2 - 2\epsilon \right)n$.
+ There exists a vertex $u\not=x$ with $\mathbf{v}_u > 1- 2 \epsilon$ and $d_u - \lambda_1 \mathbf{v}_u = O(\sqrt{n})$.  Moreover $d_u \geq \left( 1/2 - 2\epsilon \right)n$.
 \end{lemma}
 
 
@@ -724,18 +715,18 @@ variational arguments to deduce that $G$ is exactly a pineapple graph.
 
 \begin{proof}
 We proceed by first showing a weaker result: that there is a vertex $y$ with
-$y> \frac{1}{2} - \epsilon$ and $d_y - \lambda_1 y = O(\sqrt{n})$, and 
-additionally that $y \in N(x)$.  We will use then use this to bootstrap
+$\mathbf{v}_y> \frac{1}{2} - \epsilon$ and $d_y - \lambda_1 \mathbf{v}_y = O(\sqrt{n})$, and 
+additionally that $y \in N(x)$.  We will then use this to obtain
 the required result.
 
 
-Let $A: = \{z\sim x: z> \frac{1}{2} - \epsilon\}$. By Lemma \ref{spectral radius and average degree},
+Let $A: = \{z\sim x: \mathbf{v}_z> \frac{1}{2} - \epsilon\}$. By Lemma \ref{spectral radius and average degree},
 \[
-\lambda_1 = \frac{n}{2} + c_1\sqrt{n}
+\lambda_1 = \frac{n}{2} + c_1\sqrt{n},
 \]
-where $|c_1| <1$. Since $0< z\leq 1$ for all $z\sim x$, we have that $|A| \geq \delta_\epsilon n$ where $\delta_\epsilon$ is a positive constant that depends only on $\epsilon$. Let $B = \{z\sim x: d_z - \lambda_1 z >  K\sqrt{n}\}$, where $K$ is a fixed constant whose exact value will be chosen later. Now
+where $|c_1| <1$. Since $0< \mathbf{v}_z\leq 1$ for all $z\sim x$, we see that $|A| \geq \delta_\epsilon n$ where $\delta_\epsilon$ is a positive constant that depends only on $\epsilon$. Let $B = \{z\sim x: d_z - \lambda_1 \mathbf{v}_z >  K\sqrt{n}\}$, where $K$ is a fixed constant whose exact value will be chosen later. Now
 \[
-\frac{1}{|N(x)|} \sum_{y\sim x} \left( d_y -\lambda_1 y \right) \geq \frac{1}{|N(x)|} \sum_{z\in B} \left( d_z - \lambda_1 z \right) \geq \frac{1}{n} |B| K\sqrt{n}.
+\frac{1}{|N(x)|} \sum_{y\sim x} \left( d_y -\lambda_1 \mathbf{v}_y \right) \geq \frac{1}{|N(x)|} \sum_{z\in B} \left( d_z - \lambda_1 \mathbf{v}_z \right) \geq \frac{1}{n} |B| K\sqrt{n}.
 \]
 By Lemma \ref{error in x neighborhood small}, $|B| \leq \frac{c_3}{K} n$. Therefore, for $K$ large enough depending only on $\epsilon$, we have $\left|A\cap B^c\right| > 0$.  This proves the existence of the vertex $y$,
 with the properties claimed at the beginning of the proof.
@@ -743,13 +734,13 @@ with the properties claimed at the beginning of the proof.
 
 Next, we show that there exists a set $U\subset N(y)$ such that 
 $|U| \geq \left(\frac{1}{4} - 2\epsilon \right)n$ and 
-$u \geq 1-2\epsilon$ for all $u\in U$.  By Lemma \ref{spectral radius and average degree},
+$\mathbf{v}_u \geq 1-2\epsilon$ for all $u\in U$.  By Lemma \ref{spectral radius and average degree},
 \[
-\left(\frac{n}{2} + c_1\sqrt{n}\right)\left(\frac{1}{2} - \epsilon\right) \leq \lambda_1 y \leq d_y,
+\left(\frac{n}{2} + c_1\sqrt{n}\right)\left(\frac{1}{2} - \epsilon\right) \leq \lambda_1 \mathbf{v}_y \leq d_y,
 \]
-where $|c_1| < 1$. So $d_y \geq \left(\frac{1}{4} - \epsilon \right) n$ for $n$ large enough. Now let $C = \{z\sim y: z < 1-2\epsilon \}$. Then
+where $|c_1| < 1$. So $d_y \geq \left(\frac{1}{4} - \epsilon \right) n$ for $n$ large enough. Now let $C = \{z\sim y: \mathbf{v}_z < 1-2\epsilon \}$. Then
 \[
-K \sqrt{n} \geq d_y - \lambda_1 y = \sum_{z\sim y} \left( 1 - z \right) \geq \sum_{z\in C} \left( 1-z \right) \geq 2|C| \epsilon.
+K \sqrt{n} \geq d_y - \lambda_1 \mathbf{v}_y = \sum_{z\sim y} \left( 1 - \mathbf{v}_z \right) \geq \sum_{z\in C} \left( 1-\mathbf{v}_z \right) \geq 2|C| \epsilon.
 \]
 Therefore
 \[
@@ -760,12 +751,12 @@ Setting $U = N(y) \setminus C$, we have $|U| > \left(\frac{1}{4} - 2\epsilon\rig
 
 Set $D = U \cap N(x)$.  We will first find a lower bound on $|D|$.  We have
  \begin{equation*}
-  \lambda_1^2 \leq \sum_{y \sim x} d_y \leq 2m - \sum_{y \not \in N(x)} d_y
+  \lambda_1^2 \leq \sum_{y \sim x} d_y \leq 2m - \sum_{y \not \in N(x)} d_y.
  \end{equation*}
 Rearranging this we get 
- \[ d - \frac{\lambda_1^2}{n} \geq \frac{1}{n} \sum_{y \not \in N(x)} d_y\]
+ \[ d - \frac{\lambda_1^2}{n} \geq \frac{1}{n} \sum_{y \not \in N(x)} d_y.\]
 Now applying the bound on $d$ from equation~\ref{d bar bound} and expression for $\lambda_1$ in Lemma~\ref{spectral radius and average degree} yields
- \[ \left( \frac{n}{4} + c_1 \sqrt{n} + \frac{3}{2}\right) - \frac{\left(\frac{n}{2} + c_1 \sqrt{n}\right)^2}{n} \geq \frac{1}{n} \sum_{y \not \in N(x)} d_y \]
+ \[ \left( \frac{n}{4} + c_1 \sqrt{n} + \frac{3}{2}\right) - \frac{\left(\frac{n}{2} + c_1 \sqrt{n}\right)^2}{n} \geq \frac{1}{n} \sum_{y \not \in N(x)} d_y, \]
 which implies that
  \[ \frac{3}{2} n \geq \left( \frac{3}{2} - c_1^2 \right) n \geq \sum_{y \not \in N(x)} d_y \geq \sum_{y \in U\setminus N(x)} d_y \geq |U\setminus N(x)| (1-2\epsilon) \lambda_1 .\]
 So 
@@ -774,8 +765,8 @@ In particular, $|D| \geq (\frac{1}{4} - c'_\epsilon) n$.
 
 Now by the same argument used at the start of the proof to show the existence
 of the vertex $y$, we have some vertex $u \in D$
-with $d_u - \lambda_1 u = O(\sqrt{n}$).   Finally 
-\[d_u \geq u \lambda_1 \geq (1 - 2 \epsilon) (n/2 + c_1\sqrt{n}) \geq \left( 1/2 - 2\epsilon \right)n .  \]
+with $d_u - \lambda_1 \mathbf{v}_u = O(\sqrt{n}$).   Finally 
+\[d_u \geq \mathbf{v}_u \lambda_1 \geq (1 - 2 \epsilon) (n/2 + c_1\sqrt{n}) \geq \left( 1/2 - 2\epsilon \right)n .  \]
 
 \end{proof}
 
@@ -783,23 +774,23 @@ with $d_u - \lambda_1 u = O(\sqrt{n}$).   Finally
 
 \begin{lemma}\label{modifying conditions}
  Let $x,y$ be two vertices in $G$.  If
- $xy > 1/2 +n^{-1/2} + 5n^{-1}$, then $x$ and $y$ are adjacent.  On the
- other hand, if $xy < 1/2 - 3\epsilon$ then $x$ and $y$ are not adjacent.
+ $\mathbf{v}_x\mathbf{v}_y > 1/2 +n^{-1/2} + 5n^{-1}$, then $x$ and $y$ are adjacent.  On the
+ other hand, if $\mathbf{v}_x\mathbf{v}_y < 1/2 - 3\epsilon$ then $x$ and $y$ are not adjacent.
 \end{lemma}
 \begin{proof}
 We begin by bounding the dot product of the leading eigenvector $\textbf{v}$
-with itself, we will show that
+with itself.  We will show that
 \begin{equation}\label{vvt bound}
-\frac{n}{2} + \sqrt{n} + 5 \geq \textbf{v}^t\textbf{v} > \frac{n}{2} - 2 \epsilon n  - O(\sqrt{n})
+\frac{n}{2} + \sqrt{n} + 5 \geq \textbf{v}^t\textbf{v} > \frac{n}{2} - 2 \epsilon n  - O(\sqrt{n}).
 \end{equation}
 
 
 \noindent First, we show the lower bound.  With $u$ from the previous lemma, by Cauchy--Schwarz we have
-\[  \textbf{v}^t\textbf{v} \geq \sum_{z \sim u} z^2 \geq \frac{1}{d_u}\left( \sum_{z \sim u} z \right)^2 = \frac{(\lambda_1 u)^2}{d_u} \]
+\[  \textbf{v}^t\textbf{v} \geq \sum_{z \sim u} \mathbf{v}_z^2 \geq \frac{1}{d_u}\left( \sum_{z \sim u} \mathbf{v}_z \right)^2 = \frac{(\lambda_1 \mathbf{v}_u)^2}{d_u}. \]
 By Lemma~\ref{u good}, we then have
  \[\textbf{v}^t\textbf{v} \geq \frac{(d_u - O(\sqrt{n}))^2}{d_u} \geq d_u - O(\sqrt{n}) > \frac{n}{2} - 2 \epsilon n  - O(\sqrt{n}) .\]
 For the upper bound of inequality~\eqref{vvt bound}, first set $E = \left( N(x) \cup \{x\}\right)^C$.  Then
- \[ \textbf{v}^t\textbf{v} = \sum_{z \in V(G)} z^2 \leq \sum_{z \in V(G)} z \leq 1 + \sum_{z \in N(x)} z + \sum_{z \in E} z \leq 1 + \lambda_1 + \frac{1}{\lambda_1} \sum_{z \in E} d_z .\]
+ \[ \textbf{v}^t\textbf{v} = \sum_{z \in V(G)} \mathbf{v}_z^2 \leq \sum_{z \in V(G)} \mathbf{v}_z \leq 1 + \sum_{z \in N(x)} \mathbf{v}_z + \sum_{z \in E} \mathbf{v}_z \leq 1 + \lambda_1 + \frac{1}{\lambda_1} \sum_{z \in E} d_z .\]
 From the proof of Lemma~\ref{u good} we have the bound
  \[ \sum_{ z \in E} d_z \leq \frac{3}{2} n .\]
 Hence
@@ -809,17 +800,17 @@ This completes the proof of inequality~\eqref{vvt bound}.
 
  Let $\lambda_1^+$ be the leading eigenvalue of the graph formed by adding the 
  edge $\{x,y\}$ to $G$.  Then by \eqref{rayleigh quotient} we have
-  \[ \lambda_1^+ - \lambda_1 \geq \frac{\textbf{v}^t (A^+-A) \textbf{v}}{\textbf{v}^t \textbf{v}} \geq \frac{2xy}{\textbf{v}^t \textbf{v}} \geq \frac{2xy}{n/2 + \sqrt{n} + 5}  = \frac{2xy}{n(1/2+n^{-1/2} + 5 n^{-1})}.\]
-If $xy > 1/2+n^{-1/2} + 5n^{-1}$, then
-\[ (\lambda_1^+ - d^+) - (\lambda - d) > \frac{2}{n} - \frac{2}{n} \geq 0\]
+  \[ \lambda_1^+ - \lambda_1 \geq \frac{\textbf{v}^t (A^+-A) \textbf{v}}{\textbf{v}^t \textbf{v}} \geq \frac{2\mathbf{v}_x\mathbf{v}_y}{\textbf{v}^t \textbf{v}} \geq \frac{2\mathbf{v}_x\mathbf{v}_y}{n/2 + \sqrt{n} + 5}  = \frac{2\mathbf{v}_x\mathbf{v}_y}{n(1/2+n^{-1/2} + 5 n^{-1})}.\]
+If $\mathbf{v}_x\mathbf{v}_y > 1/2+n^{-1/2} + 5n^{-1}$, then
+\[ (\lambda_1^+ - d^+) - (\lambda - d) > \frac{2}{n} - \frac{2}{n} = 0.\]
 Hence $\left\{x,y\right\}$ must already have been an edge, otherwise this
 would contradict the maximality of $G$.
 
 Similarly if $\lambda_1^-$ is the leading eigenvalue of the graph obtained
 from $G$ by deleting the edge $\{x,y\}$, then  
-  \[ \lambda_1 - \lambda_1^- \leq \frac{\textbf{v}^t (A-A^-) \textbf{v}}{\textbf{v}^t \textbf{v}} \leq \frac{2xy}{n/2 - 2\epsilon n - O(\sqrt{n})} \leq \frac{2xy}{(1/2 - 3 \epsilon)n}\]
+  \[ \lambda_1 - \lambda_1^- \leq \frac{\textbf{v}^t (A-A^-) \textbf{v}}{\textbf{v}^t \textbf{v}} \leq \frac{2\mathbf{v}_x\mathbf{v}_y}{n/2 - 2\epsilon n - O(\sqrt{n})} \leq \frac{2\mathbf{v}_x\mathbf{v}_y}{(1/2 - 3 \epsilon)n},\]
 when $n$ is large enough.  Now if
-$xy < 1/2 - 3\epsilon$, then 
+$\mathbf{v}_x\mathbf{v}_y < 1/2 - 3\epsilon$, then 
  \[ (\lambda_1 - d) - (\lambda_1^- - d^-) < 0 .\] %XXX: this doesn't typeset well
 
 \end{proof}
@@ -881,10 +872,12 @@ $xy < 1/2 - 3\epsilon$, then
 }
 \endgroup
 \end{center}
-\caption[Structure of $G$ in Proposition \ref{almost pineapple structure}.]{Structure of $G$ in Proposition \ref{almost pineapple structure}.  The number beside
-each set indicates the values of eigenvector entries in the set. 
-$U$ is a clique, $V$, $W$ are independent sets.  Vertices in $V$ are adjacent
-to one vertex in $U$, and vertices in $W$ are adjacent to multiple vertices in $U$.
+\caption[Structure of $G$ in Proposition \ref{almost pineapple structure}.]{
+  Structure of $G$ in Proposition \ref{almost pineapple structure}.  The number beside
+  each set indicates the values of eigenvector entries in the set.
+  $U$ is a clique and $V$, $W$ are independent sets.  Each vertex in $V$ is adjacent
+  to exactly one vertex in $U$, and each vertex in $W$ is adjacent to multiple
+  vertices in $U$.
    \label{pineapple structure picture}}
 \end{figure}
 
@@ -917,42 +910,42 @@ sets $U, V, W$ (see Figure \ref{pineapple structure picture}) where
 \begin{itemize}
 \item[(i)] Let $V$ consist of all vertices in $G$ with eigenvector entry 
 less than $1/2 - 4 \epsilon$.  By Lemma~\ref{modifying conditions}, removing 
-any edge incident to a vertex in $V$ strictly increases $\lambda_1 - d$, so each vertex in $V$ has degree one.  By the eigenvector equation,
+any edge incident to a vertex in $V$ strictly increases $\lambda_1 - d$, so each vertex in $V$ has degree one.  By equation~\eqref{eigenvector equation},
 the eigenvector entry of any such vertex is at most $1/\lambda_1 < (2+\epsilon) / n $, when $n$ is large enough.
-\item[(ii)] From Lemma~\ref{u good}, we have a vertex $u$ such that $d_u - \lambda_1 u = O(\sqrt{n})$.  Let $X$ be the set of neighbors $z$ of $u$ such that $z < 9/10$.  Then we have
- \[ (1 - 9/10)|X| \leq \sum_{y \sim u} 1 - y = d_u - \lambda_1 u = O(\sqrt{n}). \]
+\item[(ii)] From Lemma~\ref{u good}, we have a vertex $u$ such that $d_u - \lambda_1 \mathbf{v}_u = O(\sqrt{n})$.  Let $X$ be the set of neighbors $z$ of $u$ such that $\mathbf{v}_z < 9/10$.  Then we have
+ \[ (1 - 9/10)|X| \leq \sum_{y \sim u} 1 - \mathbf{v}_y = d_u - \lambda_1 \mathbf{v}_u = O(\sqrt{n}). \]
 Hence $|X| = O(\sqrt{n})$.  Let $U$ be all vertices in $G$ with eigenvector entry at least $9/10$.  So, by Lemma~\ref{u good}
- \[ |U| \geq d_u - |X| \geq n/2 - 2 \epsilon n - O(\sqrt{n})\]
+ \[ |U| \geq d_u - |X| \geq n/2 - 2 \epsilon n - O(\sqrt{n}) . \]
 For $n$ large enough, we have $|U| \geq (1/2 - 3\epsilon) n$. For sufficiently large $n$, by Lemma~\ref{modifying conditions} these vertices are all adjacent to each other.  For the upper bound on $|U|$ we use the expression for $e(G)$ in Lemma~\ref{spectral radius and average degree}
-\[ |U| (|U| - 1) \leq 2e(G) \leq  \frac{n^2}{4} + c_2n\sqrt{n}\]
+\[ |U| (|U| - 1) \leq 2e(G) \leq  \frac{n^2}{4} + c_2n\sqrt{n}, \]
 which implies $|U| \leq (1/2+\epsilon) n$ for large enough $n$.
 
 Now take any vertex $y \in U$.  If $x$ is a vertex with largest eigenvector entry, then 
 \begin{equation}\label{y_bound}
- \lambda_1 - \lambda_1 y \leq \sum_{z \in N(x) \setminus N(y)} z \leq y + \sum_{z \in U^C} z 
+ \lambda_1 - \lambda_1 \mathbf{v}_y \leq \sum_{z \in N(x) \setminus N(y)} \mathbf{v}_z \leq \mathbf{v}_y + \sum_{z \in U^C} \mathbf{v}_z . 
 \end{equation}
 We have
  \begin{eqnarray*}
-  \lambda_1 \sum_{z \in U^C} z \leq \sum_{z \in U^C} d_z &\leq& 2e(G) - 2|E(U,U)|\\
+  \lambda_1 \sum_{z \in U^C} \mathbf{v}_z \leq \sum_{z \in U^C} d_z &\leq& 2e(G) - 2|E(U,U)|\\
    &\leq& \frac{n^2}{4} + c_2 n \sqrt{n} - (1/2 - 3\epsilon)(1/2 - 3 \epsilon - 1/n) n^2 \\
-   &\leq & 4 \epsilon n^2
+   &\leq & 4 \epsilon n^2 ,
  \end{eqnarray*}
 for $n$ sufficiently large, where we are using the expression for $e(G)$ given by Lemma~\ref{spectral radius and average degree}.
 In particular,
- \[ \sum_{z \in U^C} z \leq 9 \epsilon n \] 
+ \[ \sum_{z \in U^C} \mathbf{v}_z \leq 9 \epsilon n .\] 
 Finally, by equation~\ref{y_bound} we have 
- \[ y \geq 1 - \frac{1}{\lambda_1} \sum_{z \in U^C} z -\frac{y}{\lambda_1} \geq (1 - 20 \epsilon) .\]
+ \[ \mathbf{v}_y \geq 1 - \frac{1}{\lambda_1} \sum_{z \in U^C} \mathbf{v}_z -\frac{\mathbf{v}_y}{\lambda_1} \geq (1 - 20 \epsilon) .\]
  
 \item[(iii)] Let $W$ consist of all remaining vertices of $G$.  If a vertex 
 has eigenvector entry smaller than $1/2 - 4\epsilon$ then it is in $V$ by
 construction.  If a vertex $z \in W$ has eigenvector entry larger than $1/2 + 21\epsilon$
 then we have
- \[ (1/2 + 21 \epsilon) (1 - 20 \epsilon) > 1/2 + \epsilon \]
+ \[ (1/2 + 21 \epsilon) (1 - 20 \epsilon) > 1/2 + \epsilon, \]
 if $\epsilon < 1/50$, say.   So for sufficiently large $n$, by Lemma~\ref{modifying conditions} we 
-have that $z$ is adjacent to every vertex in $U$.  But by the proof of part (ii), this implies that $z > 1 - 20\epsilon$, which contradicts $z \in W$.
+have that $z$ is adjacent to every vertex in $U$.  But by the proof of part (ii), this implies that $\mathbf{v}_z > 1 - 20\epsilon$, which contradicts $z \in W$.
 
 For $z \in W$ and any vertex $y \in U^C$, then 
- $yz \leq (1/2 + 21 \epsilon)(1/2 + 21\epsilon) < 1/4 + 22 \epsilon$
+ $\mathbf{v}_y\mathbf{v}_z \leq (1/2 + 21 \epsilon)(1/2 + 21\epsilon) < 1/4 + 22 \epsilon$
 and so by Lemma~\ref{modifying conditions} there is no edge between $y$ and 
 $z$ in the maximal graph $G$.
 \end{itemize}
@@ -964,38 +957,39 @@ $z$ in the maximal graph $G$.
 For sufficiently large $n$, $G$ is a pineapple graph.
 \end{theorem}
 \begin{proof}
-Take $U,V,W$ as in the previous lemma.  We begin by showing that the set $W$ must be empty.  Assume to the contrary, and let $z$ be in $W$, and furthermore
+  Take $U,V,W$ as in the previous lemma.  We begin by showing that the set $W$ must be empty.
+  Proceeding by contradiction, let $z$ be in $W$.  Furthermore
 let $G^+$ be the graph obtained by adding edges from $z$ to every vertex in $U$.
 We will show that $\lambda_1(G^+) - d(G^+) > \lambda_1(G) - d(G)$, which contradicts the maximality of $G$.
 
 Since the vertex $z$ is adjacent only to vertices in $U$, and the
 fact that vertices in $U$ have eigenvector entry between $1-20\epsilon$ and $1$,
-the eigenvector equation yields
- \[\lambda_1 (1/2 - 4 \epsilon) \leq \lambda_1 z \leq d_z(G) \leq \frac{\lambda_1 z}{1 - 20 \epsilon} = (1/2 + O(\epsilon))\lambda_1\]
+equation~\eqref{eigenvector equation} yields
+ \[\lambda_1 (1/2 - 4 \epsilon) \leq \lambda_1 \mathbf{v}_z \leq d_z(G) \leq \frac{\lambda_1 \mathbf{v}_z}{1 - 20 \epsilon} = (1/2 + O(\epsilon))\lambda_1 .\]
 
 \noindent Using the expression for $\lambda_1$ in Lemma~\ref{spectral radius and average degree}, for large enough $n$ we have
- \[ \left(1-\epsilon\right)\frac{n}{4} \leq d_z(G) \leq \left(1+\epsilon\right) \frac{n}{4}\]
+ \[ \left(1-\epsilon\right)\frac{n}{4} \leq d_z(G) \leq \left(1+\epsilon\right) \frac{n}{4} .\]
 So we can bound the change in the average degrees
- \[ d(G^+) - d(G) \leq \frac{2(|U| - (1-\epsilon)n/4)}{n}< 1/2 + 3\epsilon\]
-Next we find a lower bound on $\lambda_1(G^+) - \lambda_1(G)$.  Recall that $\textbf{v}$
-is the leading eigenvector of $A(G)$, normalized so that $||\textbf{v}||_\infty = 1$.  Let $\textbf{w}$ be the vector that is equal to $\textbf{v}$ on all 
+ \[ d(G^+) - d(G) \leq \frac{2(|U| - (1-\epsilon)n/4)}{n}< 1/2 + 3\epsilon .\]
+ Next we find a lower bound on $\lambda_1(G^+) - \lambda_1(G)$.
+ Let $\textbf{w}$ be the vector that is equal to $\textbf{v}$ on all 
 vertices except $z$, and equal to $1$ for $z$.  Then, 
- \[ \lambda_1(G^+) \geq \frac{\textbf{w}^tA^+\textbf{w}}{\textbf{w}^t\textbf{w}}\] 
+ \[ \lambda_1(G^+) \geq \frac{\textbf{w}^tA^+\textbf{w}}{\textbf{w}^t\textbf{w}} .\] 
 We first find a lower bound for the numerator (with abuse of big-O notation with inequalities)
 \begin{eqnarray*} 
 \textbf{w}^tA^+\textbf{w} & \geq & \textbf{w}^tA\textbf{w} + 2(|U| - d_z(G))(1-O(\epsilon)) \geq \textbf{w}^tA\textbf{w} + (1/2-O(\epsilon))n \\
-& \geq &  \textbf{v}^tA\textbf{v} + 2d_z(G) \left(1-z\right)(1-20\epsilon) + (1/2-O(\epsilon))n \\
+& \geq &  \textbf{v}^tA\textbf{v} + 2d_z(G) \left(1-\mathbf{v}_z\right)(1-20\epsilon) + (1/2-O(\epsilon))n \\
 %& \geq &  \textbf{v}^tA\textbf{v} + 2d_z(G) \left(1/2 - 21\epsilon\right)(1-20\epsilon) + (1/2-O(\epsilon))n \\
 & \geq &  \textbf{v}^tA\textbf{v} + 2d_z(G) \left(1/2 - 31\epsilon\right) + (1/2-O(\epsilon))n \\
 %& \geq & \textbf{v}^tA\textbf{v} + 2(1-\epsilon)(n/4) \left(1/2 - 31\epsilon\right) + (1/2-O(\epsilon))n \\
 %& \geq & \textbf{v}^tA\textbf{v} + (n/4) \left(1 - 63\epsilon\right) + (1/2-O(\epsilon))n\\
-& \geq &  \textbf{v}^tA\textbf{v} + (3/4-O(\epsilon))n
+& \geq &  \textbf{v}^tA\textbf{v} + (3/4-O(\epsilon))n .
 \end{eqnarray*}
 Similarly, we find an upper bound for the denominator
 \begin{eqnarray*}
-\textbf{w}^t \textbf{w} &=& \textbf{v}^t\textbf{v} + 1 - z^2 \\
+\textbf{w}^t \textbf{w} &=& \textbf{v}^t\textbf{v} + 1 - \mathbf{v}_z^2 \\
 &\leq& \textbf{v}^t\textbf{v} + 1 - (1/2 - 4\epsilon)^2 \\
-&\leq& \textbf{v}^t\textbf{v} + 3/4 + 4\epsilon
+&\leq& \textbf{v}^t\textbf{v} + 3/4 + 4\epsilon .
 \end{eqnarray*}
 Combining these, and using the bound on $\textbf{v}^t\textbf{v}$ from
 the proof of Lemma~\ref{modifying conditions}, we get
@@ -1004,16 +998,15 @@ the proof of Lemma~\ref{modifying conditions}, we get
 % & \geq & \frac{\textbf{v}^tA\textbf{v} + (1-37\epsilon)3n/4}{\textbf{v}^t\textbf{v} + 3/4 + 4\epsilon} -  \frac{\textbf{v}^tA\textbf{v}}{\textbf{v}^t\textbf{v}}\\
  &\geq& \frac{\textbf{v}^t\textbf{v}(3/4-O(\epsilon))n - \textbf{v}^tA\textbf{v} (3/4 + 4\epsilon)}{\textbf{v}^t\textbf{v} (\textbf{v}^t\textbf{v} + 3/4 + 4\epsilon)}\\
  &\geq & \frac{(3/4-O(\epsilon))n - (3/4 + 4\epsilon)\lambda_1(G)}{\textbf{v}^t\textbf{v} + 3/4 + 4\epsilon} \\ 
- &= &  3/4 + O(\epsilon)
+ &= &  3/4 + O(\epsilon) .
 \end{eqnarray*}
 Hence $\lambda_1(G^+) - \lambda_1(G) > d(G^+) - d(G)$, and by maximality of $G$ we conclude that $W = \emptyset$.
 
 At this point we know that $G$ consists of a clique together with a set of pendant vertices $V$.  All that remains is to show that all of the pendant vertices  are incident to the same vertex in the clique.  Let $V = \left\{v_1, v_2, \cdots, v_k\right\}$, and let $u_i$ be the unique vertex in $U$ that $v_i$ is adjacent to.  Let $G^+$ be the graph obtained from $G$ by deleting the edges $\left\{v_i,u_i\right\}$ and adding the edges $\left\{v_i,x\right\}$, where $x$ is a vertex with eigenvector entry $1$.  Now, $d(G^+) = d(G)$, and 
-\[ \lambda_1(G^+) -\lambda_1(G) \geq \frac{\textbf{v}^t A^+ \textbf{v}}{\textbf{v}^t\textbf{v}} - \frac{\textbf{v}^t A \textbf{v}}{\textbf{v}^t\textbf{v}}\]
+\[ \lambda_1(G^+) -\lambda_1(G) \geq \frac{\textbf{v}^t A^+ \textbf{v}}{\textbf{v}^t\textbf{v}} - \frac{\textbf{v}^t A \textbf{v}}{\textbf{v}^t\textbf{v}}, \]
 with equality if and only if $\textbf{v}$ is a leading eigenvector for $A^+$.  We have
-\[\frac{\textbf{v}^t A^+ \textbf{v}}{\textbf{v}^t\textbf{v}} - \frac{\textbf{v}^t A \textbf{v}}{\textbf{v}^t\textbf{v}} = \frac{1}{\textbf{v}^t\textbf{v}}\left( \sum_{i=1}^k 1 - u_i \right) \geq 0\]
-with equality if and only if $u_i = 1$ for all $1 \leq i \leq k$.  By maximality of $G$, we have equality in both of the above inequalities, and so $\textbf{v}$ is a leading eigenvector for $G^+$, and every vertex in $U$ incident to a vertex in $V$ has eigenvector entry 1.  $G^+$ is a pineapple graph, and it is easy to see that there is a single vertex in a pineapple graph with maximum eigenvector entry.  It follows that the vertices in $V$ are all adjacent to the same vertex in $U$, and hence $G$ is a pineapple graph.
-
+\[\frac{\textbf{v}^t A^+ \textbf{v}}{\textbf{v}^t\textbf{v}} - \frac{\textbf{v}^t A \textbf{v}}{\textbf{v}^t\textbf{v}} = \frac{1}{\textbf{v}^t\textbf{v}}\left( \sum_{i=1}^k 1 - \mathbf{v}_{u_i} \right) \geq 0 ,\]
+with equality if and only if $\mathbf{v}_{u_i} = 1$ for all $1 \leq i \leq k$.  By maximality of $G$, we have equality in both of the above inequalities, and so $\textbf{v}$ is a leading eigenvector for $G^+$, and every vertex in $U$ incident to a vertex in $V$ has eigenvector entry 1.  $G^+$ is a pineapple graph, and it is easy to see that there is a single vertex in a pineapple graph with maximum eigenvector entry.  It follows that the vertices in $V$ are all adjacent to the same vertex in $U$, and hence $G$ is a pineapple graph.
 \end{proof}
 
 
