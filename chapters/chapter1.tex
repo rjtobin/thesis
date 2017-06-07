@@ -10,8 +10,8 @@ In this section, we provide an overview of the background terminology and result
 dissertation, and establish notation.  The section concludes with a summary of the main results.
 
 
-A graph $G$ is a pair $(V,E)$, where $E$ is a set of \textit{vertices} and $E$ is a set of unordered
-pairs of vertices, which are called the \textit{edges} of $G$.  For clarity, we will often
+A graph $G$ is a pair $(V,E)$, where $V$ is a set of \textit{vertices} and $E$ is a set of unordered
+pairs of vertices, which are called the \textit{edges} of $G$.  When the underlying graph is not clear from context, we will
 use the notation $V = V(G)$ and $E = E(G)$.  A subgraph of $G$ is a graph whose vertex set and
 edge set are subsets of $V(G)$ and $E(G)$ respectively.
 
@@ -26,9 +26,9 @@ A graph is \textit{$d$-regular} if every vertex has degree $d$.
 
 % TODO: weighted graphs
 
-\section{Spectral Graph Theory}
+\section{Spectral graph theory}
 
-\subsection{Matrices Associated to Graphs}
+\subsection{Matrices associated to graphs}
 
 
 Given a graph $G$ on $n$ vertices, many $n \times n$ matrices which encode the structure
@@ -58,8 +58,12 @@ eigenvector corresponding to $\lambda_1$ whose entries are all strictly positive
 
 The combinatorial Laplacian is defined by $L = D - A$, where $D$ is the diagonal matrix
 with $D(i,i) = d_i$.  The eigenvalues of this matrix are non-negative, which follows
-easily from considering the the eigenvector entry of largest abslute value (or alternatively,
-it is an immediate consequence of the Gershgorin circle theorem \cite{HornJohnson2012}).  
+easily from considering the the eigenvector entry of largest absolute value (or alternatively,
+it is an immediate consequence of the Gershgorin circle theorem \cite{HornJohnson2012}).
+The smallest eigenvalue of this matrix is $0$, and the corresponding eigenvector is the
+constant vector.
+The normalized Laplacian $\mathcal{L}$ is defined by $\mathcal{L} = D^{-1/2} L D^{-1/2}$.
+The eigenvalues of the normalized Laplacian lie between $0$ and $2$.
 
 %TODO: Courant-Fisher
 For real symmetric matrices, we have the following characterization for all of its eigenvalues.
@@ -87,7 +91,7 @@ eigenvalue,
 
 
 
-\subsection{Fundamental Inequalities}
+\subsection{Fundamental inequalities}
 
 We will frequently manipulate inequalities involving properties of the graph, such as the number
 of edges, and spectral parameters, such as the eigenvalues and eigenvector entries.
@@ -97,8 +101,7 @@ theory which we will use.
 
 Throughout this section we will assume that $\mathbf{v}$ is the eigenvector
 corresponding to the eigenvalue $\lambda_1$ of the adjacency matrix.  Additionally we assume that
-it is normalized so that it has maximum entry equal to 1, and that vertex $x$ is a vertex attaining this.  F
-rom the definition of the adjacency matrix, we have
+it is normalized so that it has maximum entry equal to 1, and that vertex $x$ is a vertex attaining this.  From the definition of the adjacency matrix, we have
 \begin{equation}\label{eigenvector equation}
   \lambda_1 \mathbf{v}_y = \sum_{z \sim y} \mathbf{v}_z .
 \end{equation}
@@ -131,21 +134,21 @@ similar inequalities, which incorporate additional information about the graph s
 such as the minimum or maximum degree \cite{FavaronMaheoSacle1993, BermanZhang2001, Nikiforov2006Walks}.  We highlight one of these generalizations here, which we will have occasion to use later.
 
 \begin{theorem}[Hong \cite{Hong1988}]
-  Given a graph $G$ with $m$ edges and largest adjacency eigenvalue $\lambda_1$, we have
+  Given a connected graph $G$ with $m$ edges and largest adjacency eigenvalue $\lambda_1$, we have
   \[ \lambda_1 \leq \sqrt{2m - n + 1} ,\]
   with equality only when $G$ is either $K_n$ or $K_{1,n}$.
 \end{theorem}
 \noindent This can be proved with a small modification to the proof above.  
 
 
-\section{Overview of Results}
+\section{Overview of results}
 
 The remainder of this thesis is broken into three chapters.  In Chapter~2 we consider
 measures of graph irregularity, which are statistics that quantify how much a graph deviates
 from being regular.
 In particular, we consider two such statistics. The first is the principal ratio, which,
 for a connected graph, is the ratio of the largest and smallest entries of the leading
-eigenvector of the adjacency matrix.  For this statistic, we characterze the extremal
+eigenvector of the adjacency matrix.  For this statistic, we characterize the extremal
 graphs for large enough $n$.  This was conjectured by Cioab\u{a} and Gregory
 \cite{CioabaGregory2007}.
 \begin{theorem}
@@ -156,7 +159,7 @@ graphs for large enough $n$.  This was conjectured by Cioab\u{a} and Gregory
 the difference between the largest adjacency eigenvalue and the average degree.
 In this case we show that the extremal connected graphs are \textit{pineapple graphs}, which
 are a clique with a set of pendant edges added to a single vertex on the clique.
-This was conjectured by Aouchiche et. al. \cite{AouchicheEtAl2008}.
+This was conjectured by Aouchiche et al \cite{AouchicheEtAl2008}.
 \begin{theorem}
   For sufficiently large $n$, the connected graph that maximizes $\lambda_1 - d$
   is a pineapple graph.
@@ -180,7 +183,7 @@ by Cao and Vince in 1993 \cite{CaoVince1993}.
 the extremal graph in that case is given by $P_1 + P_{n-1}$, as conjectured
 by Cvetkovi\'{c} and Rowlinson \cite{CvetkovicRowlinson1990}.
 \begin{theorem}
-  For sufficiently large $n$, the planar graph on $n$ vertices that maximizes $\lambda_1$
+  For sufficiently large $n$, the outerplanar graph on $n$ vertices that maximizes $\lambda_1$
   is $P_1 + P_{n-1}$.
 \end{theorem}
 

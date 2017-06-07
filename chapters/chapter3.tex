@@ -1,4 +1,4 @@
-\chapter{The Spectral Radius of Outerplanar and Planar Graphs}
+\chapter{The spectral radius of outerplanar and planar graphs}
 \section{Introduction}
 
 The study of spectral radius of planar graphs has a long history, dating back to at least Schwenk
@@ -7,8 +7,13 @@ of research was further motivated by applications where the spectral
 radius is used as a measure of the connectivity of a network, in
 particular for planar
 networks in areas such as geography, see for example \cite{BootsRoyle1991}
-and its references.  To compare connectivity of networks to a theoretical upper bound, geographers were
-interested in finding the planar graph of maximum spectral radius. To this end, Boots and Royle and
+and its references.  In the field of geography, the spectral radius of the adjacency
+matrix was being used as a ``summary measure of overall network connectivity'' (\cite{BootsRoyle1991})
+of planar networks. 
+To compare this statistic for two networks with different numbers of vertices, it is
+necessary to normalize by dividing out the maximum spectral radius of a planar graph on
+$n$ vertices.
+To this end, Boots and Royle and
 independently Cao and Vince conjectured that the extremal graph is $P_2 + P_{n-2}$
 \cite{BootsRoyle1991}, \cite{CaoVince1993}. Several researchers have worked on this problem and
 successively improved upon the best theoretical upper bound, including \cite{Hong1988},
@@ -31,7 +36,7 @@ was also worked on by Cao and Vince \cite{CaoVince1993} and Zhou--Lin--Hu \cite{
 
 % TODO: introduce notation
 
-\section{Outerplanar Graphs of Maximum Spectral Radius}\label{outerplanar}
+\section{Outerplanar graphs of maximum spectral radius}\label{outerplanar}
 Let $G$ be a graph. As before, let the first eigenvector of the adjacency matrix of $G$ be $\textbf{v}$ normalized so that maximum entry is $1$. For $v\in V(G)$ we will use $v$ to mean a vertex or the eigenvector entry of that vertex, where it will be clear from context which meaning we are using. Let $x$ be a vertex with maximum eigenvector entry, ie $x=1$.  Throughout let $G$ be an outerplanar graph on $n$ vertices with maximal adjacency spectral radius.  $\lambda_1$ will refer to $\lambda_1(A(G))$. 
 
 Two consequences of $G$ being outerplanar that we will use frequently are that $G$ has at most $2n-3$ edges and $G$ does not contain $K_{2,3}$ as a subgraph. An outline of our proof is as follows. We first show that there is a single vertex of large degree and that the remaining vertices have small eigenvector entry (Lemma \ref{small eigvec}). We use this to show that the vertex of large degree must be adjacent to every other vertex (Lemma \ref{bound bad elements}). From here it is easy to prove that $G$ must be $K_1+P_{n-1}$.
@@ -105,7 +110,7 @@ We begin with an easy lemma that is clearly not optimal, but suffices for our ne
 \end{lemma}
 \begin{proof}
  Let $A$ be the neighborhood of $u$, and let $B = V(G) \setminus (A\cup \{u\})$.  We have 
-  \[ \lambda_1^2 \mathbf{v}_u = \sum_{y \sim u} \sum_{z \sim y} \mathbf{v}_z \leq d_u + \sum_{y \sim u} \sum_{z \in N(y)\cap A} \mathbf{v}_z + \sum_{y \sim u} \sum_{z \in N(y)\cap B} z. \]
+  \[ \lambda_1^2 \mathbf{v}_u = \sum_{y \sim u} \sum_{z \sim y} \mathbf{v}_z \leq d_u + \sum_{y \sim u} \sum_{z \in N(y)\cap A} \mathbf{v}_z + \sum_{y \sim u} \sum_{z \in N(y)\cap B} \mathbf{v}_z. \]
 
 \noindent By outerplanarity, each vertex in $A$ has at most two neighbors in $A$, otherwise
 $G$ would contain a $K_{2,3}$.  In particular,
@@ -164,9 +169,9 @@ It follows that $G$ is a subgraph of $K_1 + P_{n-1}$, and maximality ensures tha
 \end{proof}
 
 
-\section{Planar Graphs of Maximum Spectral Radius}\label{planar}
+\section{Planar graphs of maximum spectral radius}\label{planar}
 
-\subsection{Structural Lemmas}
+\subsection{Structural lemmas}
 
 As before, let $G$ be a graph with first eigenvector normalized so that maximum entry is $1$, and let $x$ be a vertex with maximum eigenvector entry, ie $x=1$. Let $m = |E(G)|$. For subsets $X, Y\subset V(G)$ we will write $E(X)$ to be the set of edges induced by $X$ and $E(X,Y)$ to be the set of edges with one endpoint in $X$ and one endpoint in $Y$. We will let $e(X,Y) = |E(X,Y)|$. We will often assume $n$ is large enough without saying so explicitly. Throughout the section, let $G$ be the planar graph on $n$ vertices with maximum spectral radius, and let $\lambda_1$ denote this spectral radius.
 
@@ -298,9 +303,11 @@ Next we show that there are two vertices adjacent to most of $S$. The first step
 
 \end{lemma}
 \begin{proof}
-\[
-\sum_{z\in L} \lambda_1 \mathbf{v}_z = \sum_{z\in L} \sum_{y\sim z} \mathbf{v}_y = \sum_{z\in L}\left( \sum_{\substack{y\sim z \\ y\in S}} \mathbf{v}_y + \sum_{\substack{y\sim z\\ y\in L}} \mathbf{v}_y \right) \leq \epsilon e(S,L) + 2e(L) \leq \epsilon (2n-4) + \frac{18\sqrt{2n-4}}{\epsilon}.
-\]
+\begin{eqnarray*}
+  \sum_{z\in L} \lambda_1 \mathbf{v}_z = \sum_{z\in L} \sum_{y\sim z} \mathbf{v}_y &=& \sum_{z\in L}\left( \sum_{\substack{y\sim z \\ y\in S}} \mathbf{v}_y + \sum_{\substack{y\sim z\\ y\in L}} \mathbf{v}_y \right) \\
+  & \leq & \epsilon e(S,L) + 2e(L) \\
+  & \leq & \epsilon (2n-4) + \frac{18\sqrt{2n-4}}{\epsilon}.
+\end{eqnarray*}
 Dividing both sides by $\lambda_1$ and using Lemma \ref{planar trivial spectral bound} gives \eqref{eigenvector norm L}.
 
  On the other hand,
@@ -350,14 +357,17 @@ By equation~\eqref{eigenvector equation}, we see
 \lambda_1^2 = \sum_{y\sim x}\sum_{z\sim y} \mathbf{v}_z \leq \left(\sum_{uv\in E(G)} \mathbf{v}_u+\mathbf{v}_v\right) - \sum_{y\sim x} \mathbf{v}_y = \left(\sum_{uv\in E(G)} \mathbf{v}_u+\mathbf{v}_v\right) - \lambda_1.
 \]
 Rearranging and noting that $e(S) \leq 3n-6$ and $e(L) \leq \frac{9\sqrt{2n-4}}{\epsilon}$ since $S$ and $L$ both induce planar subgraphs gives
-\begin{align*}
-& 2n-4\leq \lambda_1^2 + \lambda_1\leq \sum_{uv\in E(G)} \mathbf{v}_u+\mathbf{v}_v = \left(\sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{uv\in E(S)} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{uv\in E(L)} \mathbf{v}_u+\mathbf{v}_v \right) \\
-& \leq \left(\sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v \right) + \epsilon(6n-12) + \frac{18\sqrt{2n-4}}{\epsilon}.
-\end{align*}
+\begin{eqnarray*}
+  2n-4\leq \lambda_1^2 + \lambda_1 &\leq & \sum_{uv\in E(G)} \mathbf{v}_u+\mathbf{v}_v \\
+  & = & \left(\sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{uv\in E(S)} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{uv\in E(L)} \mathbf{v}_u+\mathbf{v}_v \right) \\
+ &\leq & \left(\sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v \right) + \epsilon(6n-12) + \frac{18\sqrt{2n-4}}{\epsilon}.
+\end{eqnarray*}
 So for $n$ large enough,
-\[
-(2-7\epsilon)n \leq \sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v =\left( \sum_{\substack{uv\in E(S,L)\\ u=x}} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{\substack{uv\in E(S,L)\\ u\not= x}} \mathbf{v}_u+\mathbf{v}_v\right) \leq \epsilon e(S,L) + d_x + \sum_{\substack{uv\in E(S,L)\\ u\not= x} } \mathbf{v}_u,
-\]
+\begin{eqnarray*}
+  (2-7\epsilon)n &\leq & \sum_{uv\in E(S,L)} \mathbf{v}_u+\mathbf{v}_v \\
+  &=&  \left( \sum_{\substack{uv\in E(S,L)\\ u=x}} \mathbf{v}_u+\mathbf{v}_v\right) + \left(\sum_{\substack{uv\in E(S,L)\\ u\not= x}} \mathbf{v}_u+\mathbf{v}_v\right) \\
+  & \leq & \epsilon e(S,L) + d_x + \sum_{\substack{uv\in E(S,L)\\ u\not= x} } \mathbf{v}_u,
+\end{eqnarray*}
 giving
 \[
 \sum_{\substack{uv\in E(S,L)\\ u\not = x}} \mathbf{v}_u \geq (1-9\epsilon)n.
@@ -457,7 +467,7 @@ So $\lambda_1(H) > \lambda_1(G)$ and $H$ is planar, i.e. $G$ is not extremal, a 
 We now have that if $G$ is extremal, then $K_2+I_{n-2}$, the join of an edge and an independent set of size $n-2$, is a subgraph of $G$. Finishing the proof is straightforward.
 
 
-\subsection{Proof of Main Theorem}
+\subsection{Proof of main theorem}
 
 \begin{theorem}
 For $n\geq N_0$, the unique planar graph on $n$ vertices with maximum spectral radius is $K_{2} + P_{n-2}$.

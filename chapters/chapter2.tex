@@ -1,9 +1,9 @@
-\chapter{Measures of Graph Irregularity}
+\chapter{Measures of graph irregularity}
 \section{Introduction}
 
 A \textit{measure of graph irregularity} is a  statistics that quantifies how far a graph is
 from being regular.  The choice of the word ``measure'' is slightly unfortunate due to its
-more common usage in mathematics, but this is the phrase that has been used repeatedly in the
+more common alternative meaning, but this is the phrase that has been used repeatedly in the
 literature, and so we adopt it here.  Many different such statistics have been proposed.
 There is the \textit{irregularity of a graph} as defined by Albertson \cite{Albertson1997},
 \[ \textrm{irr}(G) = \sum_{(u,v) \in E(G)} \left| d_u - d_v \right| .\]
@@ -12,7 +12,7 @@ the \textit{total irregularity}, was introduced by Abdo et. al. \cite{Abdo2014},
 \[ \textrm{irr}_{\textrm{it}}(G) = \frac{1}{2} \sum_{u \in V(G)} \sum_{v \in V(G)} \left| d_u - d_v\right|\]
 Another irregularity measure that does depends only on the degree sequence is given by the
 variance of the degree sequence, studied by Bell \cite{Bell1992},
-\[var(G) = \frac{1}{n} \sum_{v\in V(G)} \left| d_v - \bar{d} \right|^2 . \]
+\[var(G) = \frac{1}{n} \sum_{v\in V(G)} \left| d_v - d \right|^2 . \]
 Collatz and Sinogowitz, in perhaps the first spectral graph theory paper, noted
 that the difference between the largest adjacency eigenvalue and the average degree
 can be seen as a measure of the irregularity of a connected graph \cite{CollatzSinogowitz1957}.
@@ -65,15 +65,15 @@ were characterized by Hansen and M\'elot \cite{HansenMelot2002},
 and the extremal graphs with respect to the total irregularity
 were studied by \cite{Abdo2014}.
 Nikiforov \cite{Nikiforov2006} proved several inequalities comparing
-$var(G)$, $\epsilon(G)$ and $s(G) := \sum_v |d(u) - \bar{d}|$.  
+$var(G)$, $\epsilon(G)$ and $s(G) := \sum_v |d(u) - d|$.  
 Bell showed that $\epsilon(G)$ and $var(G)$ are incomparable in general
 \cite{Bell1992}.  Finally, additional bounds on $\gamma(G)$ have been given in
 \cite{CioabaGregory2007, PapendieckRecht2000, Minc1970, Latham1995, Zhang2005}.
 
 
-\section{Graphs of Maximal Principal Ratio}
+\section{Graphs of maximal principal ratio}
 
-\subsection{Structural Lemmas}
+\subsection{Structural lemmas}
 %XXX: move this stuff somewhere
 
 Throughout this section $G$ will be a connected simple graph on $n$ vertices.
@@ -165,7 +165,7 @@ We now give a sketch of the proof that is contained in Section~\ref{sec_proof}.
    
 \end{enumerate}
 
-\subsection{Proof of Main Theorem}\label{sec_proof}
+\subsection{Proof of main theorem}\label{sec_proof}
 
 
 
@@ -523,9 +523,9 @@ Now, $\lambda_1(H) > \lambda_1(G)$ because $E(G) \subsetneq E(H)$. Since the fun
 
 
 
-\section{Connected Graphs of Maximum Irregularity}\label{pineapple}
+\section{Connected graphs of maximum irregularity}\label{pineapple}
 
-\subsection{Structural Lemmas}
+\subsection{Structural lemmas}
 Throughout this section, let $G$ be a graph on $n$ vertices with spectral radius $\lambda_1$ and first eigenvector normalized so that $x=1$. Throughout we will use $d = 2e(G)/n$ to denote the average degree. We will also assume that $G$ is the connected graph on $n$ vertices that maximizes $\lambda_1 - d$.
 
 To show that $G$ is a pineapple graph we first show that $\lambda_1 \sim \frac{n}{2}$ and $d\sim \frac{n}{4}$ (Lemma \ref{spectral radius and average degree}). Then we show that there exists a vertex with degree close to $\frac{n}{2}$ and eigenvector entry close to $1$ (Lemma~\ref{u good}). We bootstrap this to show that there are many vertices of degree about $\frac{n}{2}$, that these vertices induce a clique, and further that most of the remaining vertices have degree $1$ (Lemma \ref{modifying conditions} and Proposition \ref{almost pineapple structure}).  We complete the proof by showing that all vertices not in the clique have degree $1$ and that they are all adjacent to the same vertex.
@@ -770,7 +770,7 @@ with $d_u - \lambda_1 \mathbf{v}_u = O(\sqrt{n}$).   Finally
 
 \end{proof}
 
-\subsection{Alteration Step}
+\subsection{Alteration step}
 
 \begin{lemma}\label{modifying conditions}
  Let $x,y$ be two vertices in $G$.  If
@@ -951,7 +951,7 @@ $z$ in the maximal graph $G$.
 \end{itemize}
 \end{proof}
 
-\subsection{The Pineapple Graph is Extremal}
+\subsection{The pineapple graph is extremal}
 
 \begin{theorem}
 For sufficiently large $n$, $G$ is a pineapple graph.
